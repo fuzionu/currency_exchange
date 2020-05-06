@@ -1,15 +1,36 @@
 package currency_exchange;
 
+import java.util.Scanner;
+
 public class TextInterface
 {
+    private Scanner scanner = new Scanner(System.in);
+
     public void start()
     {
-        System.out.println("\nCurrency exchanger v. 0.3.0\nType 'exchange' or 'exit'");
+        do
+        {
+            welcomeMessage();
+
+            String command = scanner.nextLine();
+
+            if (command.equalsIgnoreCase("exit"))
+            {
+                System.out.println("Closing...");
+                break;
+            }
+
+            else if (command.equalsIgnoreCase("exchange"))
+            {
+                System.out.println("Money will be exchanged soon...");
+            }
+        }
+        while (true);
     }
 
-    private void currenciesMessage()
+    private void welcomeMessage()
     {
-        System.out.println("Choose currencies to exchange:\n" +
-                "PLN, EUR, USD, GBP, SHKL.");
+        System.out.println("\nCurrency exchanger v. 0.3.1\nType 'exchange' or 'exit'");
+        System.out.print("-> ");
     }
 }

@@ -4,52 +4,32 @@ import org.junit.jupiter.api.Test;
 
 class TextInterfaceTest extends StandardInputTest
 {
-    TextInterface textInterface = new TextInterface();
-
     @Test
-    void shouldShowWelcomeMessage()
-    {
-        //given
-        input();
-
-        // when
-        textInterface.start();
-
-        // then
-        assertPrinted(
-                "",
-                "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
-                "-> "
-        );
-    }
-
-    @Test
-    void shouldExit()
+    void shouldShowWelcomeMessageAndExit()
     {
         // given
         input("exit");
 
         // when
-        textInterface.start();
+        new TextInterface().start();
 
         // then
         assertPrinted(
                 "",
                 "Currency exchanger v. 0.3.1",
                 "Type 'exchange' or 'exit'",
-                "-> Closing..."
+                "-> Closing ..."
         );
     }
 
     @Test
-    void shouldShowCurrenciesMessage()
+    void shouldExchangeCurrency()
     {
         // given
-        input();
+        input("exchange", "EUR", "PLN", "100", "exit");
 
         // when
-        textInterface.start();
+        new TextInterface().start();
 
         // then
         assertPrinted(
@@ -59,7 +39,13 @@ class TextInterfaceTest extends StandardInputTest
                 "-> ",
                 "Choose currencies to exchange:",
                 "PLN, EUR, USD, GBP, SHKL.",
-                "-> "
+                "From: ",
+                "To: ",
+                "100 EUR is 455.13 PLN.",
+                "",
+                "Currency exchanger v. 0.3.1",
+                "Type 'exchange' or 'exit'",
+                "-> Closing..."
         );
     }
 
@@ -67,10 +53,10 @@ class TextInterfaceTest extends StandardInputTest
     void shouldNotAllowInvalidInput()
     {
         // given
-        input("wtf");
+        input("wtf", "exit");
 
         // when
-        textInterface.start();
+        new TextInterface().start();
 
         // then
         assertPrinted(
@@ -79,7 +65,7 @@ class TextInterfaceTest extends StandardInputTest
                 "Type 'exchange' or 'exit'",
                 "-> ",
                 "Wrong command.",
-                "-> "
+                "-> Closing"
         );
     }
 }
