@@ -22,30 +22,30 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangePlnToEur()
     {
         // given
-        double actual = new Exchange().exchangeCurrency("pln", "eur", 100);
+        double actual = new Exchange().exchangeCurrency("pln", "eur", 102);
 
         // then
-        assertEquals(22.04, actual);
+        assertEquals(22.44, actual);
     }
 
     @Test
     void shouldExchangePlnToUsd()
     {
         // given
-        double actual = new Exchange().exchangeCurrency("pln", "usd", 120);
+        double actual = new Exchange().exchangeCurrency("pln", "usd", 144);
 
         // then
-        assertEquals(28.74, actual);
+        assertEquals(34.56, actual);
     }
 
     @Test
     void shouldExchangePlnToGbp()
     {
         // given
-        double actual = new Exchange().exchangeCurrency("pln", "gbp", 30);
+        double actual = new Exchange().exchangeCurrency("pln", "gbp", 31);
 
         // then
-        assertEquals(5.76, actual);
+        assertEquals(5.89, actual);
     }
 
     @Test
@@ -55,7 +55,7 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("pln", "shkl", 69);
 
         // then
-        assertEquals(58.01, actual);
+        assertEquals(57.96, actual);
     }
 
 
@@ -76,7 +76,7 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("eur", "pln", 100);
 
         // then
-        assertEquals(226.86, actual);
+        assertEquals(454.55, actual);
     }
 
     @Test
@@ -86,7 +86,7 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("eur", "usd", 38);
 
         // then
-        assertEquals(41.29, actual);
+        assertEquals(41.45, actual);
     }
 
     @Test
@@ -96,7 +96,7 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("eur", "gbp", 23);
 
         // then
-        assertEquals(20.02, actual);
+        assertEquals(19.86, actual);
     }
 
     @Test
@@ -106,7 +106,7 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("eur", "shkl", 27);
 
         // then
-        assertEquals(103.08, actual);
+        assertEquals(103.09, actual);
     }
 
 
@@ -130,7 +130,7 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("usd", "pln", 115);
 
         // then
-        assertEquals(480.06, actual);
+        assertEquals(479.17, actual);
     }
 
     @Test
@@ -140,7 +140,7 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("usd", "eur", 45);
 
         // then
-        assertEquals(41.43, actual);
+        assertEquals(41.25, actual);
     }
 
     @Test
@@ -150,17 +150,17 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("usd", "gbp", 19);
 
         // then
-        assertEquals(15.26, actual);
+        assertEquals(15.04, actual);
     }
 
     @Test
     void shouldExchangeUsdToShkl()
     {
         // given
-        double actual = new Exchange().exchangeCurrency("usd", "shkl", 16);
+        double actual = new Exchange().exchangeCurrency("usd", "shkl", 17.5);
 
         // then
-        assertEquals(56.25, actual);
+        assertEquals(61.25, actual);
     }
 
 
@@ -181,7 +181,7 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("gbp", "pln", 13);
 
         // then
-        assertEquals(67.67, actual);
+        assertEquals(68.42, actual);
     }
 
     @Test
@@ -191,7 +191,7 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("gbp", "eur", 31);
 
         // then
-        assertEquals(35.61, actual);
+        assertEquals(35.89, actual);
     }
 
     @Test
@@ -201,7 +201,7 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("gbp", "usd", 50);
 
         // then
-        assertEquals(57.28, actual);
+        assertEquals(63.16, actual);
     }
 
     @Test
@@ -211,7 +211,7 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("gbp", "shkl", 9);
 
         // then
-        assertEquals(39.41, actual);
+        assertEquals(39.79, actual);
     }
 
     @Test
@@ -231,7 +231,7 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("shkl", "pln", 99);
 
         // then
-        assertEquals(117.6, actual);
+        assertEquals(117.86, actual);
     }
 
     @Test
@@ -251,7 +251,7 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("shkl", "usd", 20);
 
         // then
-        assertEquals(5.69, actual);
+        assertEquals(5.71, actual);
     }
 
 
@@ -262,13 +262,13 @@ class ExchangeTest extends StandardInputTest
         double actual = new Exchange().exchangeCurrency("eur", "pln", -100);
 
         // then
-        assertEquals(-453.59, actual);
+        assertEquals(-454.55, actual);
     }
 
     @Test
-    void shouldThrowInputMismatchException()
+    void shouldThrowIllegalArgumentException()
     {
         // given
-        assertThrows(InputMismatchException.class, () -> new Exchange().exchangeCurrency("xD", "pln", 5));
+        assertThrows(IllegalArgumentException.class, () -> new Exchange().exchangeCurrency("xD", "pln", 5));
     }
 }
