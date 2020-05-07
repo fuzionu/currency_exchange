@@ -18,7 +18,7 @@ class TextInterfaceTest extends StandardInputTest
                 "",
                 "Currency exchanger v. 0.3.1",
                 "Type 'exchange' or 'exit'",
-                "-> Closing ..."
+                "-> Closing..."
         );
     }
 
@@ -36,12 +36,9 @@ class TextInterfaceTest extends StandardInputTest
                 "",
                 "Currency exchanger v. 0.3.1",
                 "Type 'exchange' or 'exit'",
-                "-> ",
-                "Choose currencies to exchange:",
+                "-> Choose currency:",
                 "PLN, EUR, USD, GBP, SHKL.",
-                "From: ",
-                "To: ",
-                "100 EUR is 455.13 PLN.",
+                "From: To: Amount: 100.0 EUR is 454.55 PLN.",
                 "",
                 "Currency exchanger v. 0.3.1",
                 "Type 'exchange' or 'exit'",
@@ -63,9 +60,44 @@ class TextInterfaceTest extends StandardInputTest
                 "",
                 "Currency exchanger v. 0.3.1",
                 "Type 'exchange' or 'exit'",
-                "-> ",
-                "Wrong command.",
-                "-> Closing"
+                "-> Wrong command.",
+                "-> Closing..."
+        );
+    }
+
+    @Test
+    void shouldContinueWithBlankInput()
+    {
+        // given
+        input("", "  ", " ", "exit");
+
+        // when
+        new TextInterface().start();
+
+        // then
+        assertPrinted(
+                "",
+                "Currency exchanger v. 0.3.1",
+                "Type 'exchange' or 'exit'",
+                "-> -> -> -> Closing..."
+        );
+    }
+
+    @Test
+    void shouldStripInput()
+    {
+        // given
+        input("  exit ");
+
+        // when
+        new TextInterface().start();
+
+        // then
+        assertPrinted(
+                "",
+                "Currency exchanger v. 0.3.1",
+                "Type 'exchange' or 'exit'",
+                "-> Closing..."
         );
     }
 }
