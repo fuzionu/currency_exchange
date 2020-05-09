@@ -17,7 +17,7 @@ class TextInterfaceTest extends StandardInputTest
         assertPrinted(
                 "",
                 "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
+                "Type `exchange` or `exit`",
                 "-> Closing..."
         );
     }
@@ -35,13 +35,13 @@ class TextInterfaceTest extends StandardInputTest
         assertPrinted(
                 "",
                 "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
+                "Type `exchange` or `exit`",
                 "-> Choose currency:",
                 "PLN, EUR, USD, GBP, SHKL.",
                 "From: To: Amount: 100.0 EUR is 454.55 PLN.",
                 "",
                 "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
+                "Type `exchange` or `exit`",
                 "-> Closing..."
         );
     }
@@ -59,7 +59,7 @@ class TextInterfaceTest extends StandardInputTest
         assertPrinted(
                 "",
                 "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
+                "Type `exchange` or `exit`",
                 "-> Wrong command.",
                 "-> Closing..."
         );
@@ -78,7 +78,7 @@ class TextInterfaceTest extends StandardInputTest
         assertPrinted(
                 "",
                 "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
+                "Type `exchange` or `exit`",
                 "-> -> -> -> Closing..."
         );
     }
@@ -96,7 +96,7 @@ class TextInterfaceTest extends StandardInputTest
         assertPrinted(
                 "",
                 "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
+                "Type `exchange` or `exit`",
                 "-> Closing..."
         );
     }
@@ -114,7 +114,7 @@ class TextInterfaceTest extends StandardInputTest
         assertPrinted(
                 "",
                 "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
+                "Type `exchange` or `exit`",
                 "-> Choose currency:",
                 "PLN, EUR, USD, GBP, SHKL.",
                 "From: Currency doesn't exist.",
@@ -122,7 +122,7 @@ class TextInterfaceTest extends StandardInputTest
                 "To: Amount: 100.0 SHKL is 22.62 GBP.",
                 "",
                 "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
+                "Type `exchange` or `exit`",
                 "-> Closing..."
         );
     }
@@ -140,13 +140,13 @@ class TextInterfaceTest extends StandardInputTest
         assertPrinted(
                 "",
                 "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
+                "Type `exchange` or `exit`",
                 "-> Choose currency:",
                 "PLN, EUR, USD, GBP, SHKL.",
                 "From: From: To: Amount: 2.0 USD is 7.0 SHKL.",
                 "",
                 "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
+                "Type `exchange` or `exit`",
                 "-> Closing..."
         );
     }
@@ -164,14 +164,14 @@ class TextInterfaceTest extends StandardInputTest
         assertPrinted(
                 "",
                 "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
+                "Type `exchange` or `exit`",
                 "-> Choose currency:",
                 "PLN, EUR, USD, GBP, SHKL.",
                 "From: To: Amount: Not a number.",
                 "Amount: 50.0 EUR is 227.27 PLN.",
                 "",
                 "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
+                "Type `exchange` or `exit`",
                 "-> Closing..."
         );
     }
@@ -189,13 +189,13 @@ class TextInterfaceTest extends StandardInputTest
         assertPrinted(
                 "",
                 "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
+                "Type `exchange` or `exit`",
                 "-> Choose currency:",
                 "PLN, EUR, USD, GBP, SHKL.",
                 "From: To: Amount: Amount: 1024.0 GBP is 5389.47 PLN.",
                 "",
                 "Currency exchanger v. 0.3.1",
-                "Type 'exchange' or 'exit'",
+                "Type `exchange` or `exit`",
                 "-> Closing..."
         );
     }
