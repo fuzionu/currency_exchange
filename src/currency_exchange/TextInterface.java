@@ -47,14 +47,67 @@ public class TextInterface
         System.out.println("Choose currency:\nPLN, EUR, USD, GBP, SHKL.");
 
         System.out.print("From: ");
-        String from = scanner.nextLine();
+        String from = getStringInput("From: ");
 
         System.out.print("To: ");
-        String to = scanner.nextLine();
+        String to = getStringInput("To: ");
 
         System.out.print("Amount: ");
-        double amount = Double.parseDouble(scanner.nextLine());
+        double amount = getDoubleInput();
 
         return amount + " " + from.toUpperCase() + " is " + exchange.exchangeCurrency(from, to, amount) + " " + to.toUpperCase() + ".";
+    }
+
+    private double getDoubleInput()
+    {
+        do
+        {
+            String input = scanner.nextLine().strip();
+
+            if (input.isEmpty())
+            {
+                System.out.print("Amount: ");
+            }
+
+            else
+            {
+                try
+                {
+                    return Double.parseDouble(input);
+                }
+
+                catch (NumberFormatException exc)
+                {
+                    System.out.print("Not a number.\nAmount: ");
+                }
+            }
+        } while (true);
+    }
+
+    private String getStringInput(String fromOrTo)
+    {
+        do
+        {
+            String input = scanner.nextLine().toUpperCase().strip();
+
+            for (int x = 0; x < exchange.currencies.size(); x++)
+            {
+                if (exchange.currencies.containsKey(input))
+                {
+                    return input;
+                }
+            }
+
+            if (input.isEmpty())
+            {
+                System.out.print(fromOrTo);
+            }
+
+            else if (!exchange.currencies.containsKey(input))
+            {
+                System.out.print("Currency doesn't exist.\n");
+                System.out.print(fromOrTo);
+            }
+        } while (true);
     }
 }
