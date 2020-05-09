@@ -9,12 +9,14 @@ public class TextInterface
 
     public void start()
     {
-        System.out.println("\nCurrency exchanger v. 0.3.1\nType 'exchange' or 'exit'");
+        final String welcomeMessage = "\nCurrency exchanger v. 0.3.1\nType `exchange` or `exit`";
+
+        System.out.println(welcomeMessage);
+
         do
         {
             System.out.print("-> ");
-            String command = scanner.nextLine();
-            command = command.strip();
+            String command = scanner.nextLine().strip();
 
             if (command.isEmpty())
             {
@@ -24,7 +26,7 @@ public class TextInterface
             if (command.equalsIgnoreCase("exchange"))
             {
                 System.out.println(exchange());
-                System.out.println("\nCurrency exchanger v. 0.3.1\nType 'exchange' or 'exit'");
+                System.out.println(welcomeMessage);
             }
 
             else if (command.equalsIgnoreCase("exit"))
@@ -55,7 +57,7 @@ public class TextInterface
         System.out.print("Amount: ");
         double amount = getDoubleInput();
 
-        return amount + " " + from.toUpperCase() + " is " + exchange.exchangeCurrency(from, to, amount) + " " + to.toUpperCase() + ".";
+        return amount + " " + from + " is " + exchange.exchangeCurrency(from, to, amount) + " " + to + ".";
     }
 
     private double getDoubleInput()
@@ -88,13 +90,13 @@ public class TextInterface
     {
         do
         {
-            String input = scanner.nextLine().toUpperCase().strip();
+            String input = scanner.nextLine().strip().toUpperCase();
 
             for (int x = 0; x < exchange.currencies.size(); x++)
             {
                 if (exchange.currencies.containsKey(input))
                 {
-                    return input;
+                    return input.toUpperCase();
                 }
             }
 
@@ -105,8 +107,7 @@ public class TextInterface
 
             else if (!exchange.currencies.containsKey(input))
             {
-                System.out.print("Currency doesn't exist.\n");
-                System.out.print(fromOrTo);
+                System.out.print("Currency doesn't exist.\n" + fromOrTo);
             }
         } while (true);
     }
