@@ -10,7 +10,6 @@ public class TextInterface
     public void start()
     {
         final String welcomeMessage = "\nCurrency exchanger v. 0.3.1\nType `exchange` or `exit`";
-        int commandMistakes = 0;
 
         System.out.println(welcomeMessage);
 
@@ -38,26 +37,13 @@ public class TextInterface
 
             else if (!command.equalsIgnoreCase("exchange") && !command.equalsIgnoreCase("exit"))
             {
-                System.out.println("Wrong command.");
-                commandMistakes = giveHelp(commandMistakes);
+                System.out.println("Wrong command.\nUsable commands: `exchange` or `exit`.");
             }
 
         }
         while (true);
     }
 
-    private int giveHelp(int mistakes)
-    {
-        mistakes += 1;
-
-        if (mistakes == 3)
-        {
-            System.out.println("Usable commands: `exchange` or `exit`.");
-            mistakes = 0;
-        }
-
-        return mistakes;
-    }
 
     private String exchange()
     {

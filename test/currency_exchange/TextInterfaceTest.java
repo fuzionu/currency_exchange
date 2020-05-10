@@ -61,6 +61,7 @@ class TextInterfaceTest extends StandardInputTest
                 "Currency exchanger v. 0.3.1",
                 "Type `exchange` or `exit`",
                 "-> Wrong command.",
+                "Usable commands: `exchange` or `exit`.",
                 "-> Closing..."
         );
     }
