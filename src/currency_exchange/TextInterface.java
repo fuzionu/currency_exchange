@@ -93,9 +93,9 @@ public class TextInterface
         {
             String input = scanner.nextLine().strip().toUpperCase();
 
-            for (int x = 0; x < exchange.currencies.size(); x++)
+            for (int x = 0; x < exchange.factor.size(); x++)
             {
-                if (exchange.currencies.containsKey(input))
+                if (exchange.factor.containsKey(input))
                 {
                     return input.toUpperCase();
                 }
@@ -106,7 +106,7 @@ public class TextInterface
                 System.out.print(fromOrTo);
             }
 
-            else if (!exchange.currencies.containsKey(input))
+            else if (!exchange.factor.containsKey(input))
             {
                 System.out.print("Currency doesn't exist.\n" + fromOrTo);
             }

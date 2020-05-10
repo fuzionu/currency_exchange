@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Exchange
 {
-    Map<String, Double> currencies = currency();
+    Map<String, Double> factor = factor();
 
     public double exchangeCurrency(String from, String to, double amount)
     {
@@ -38,25 +38,25 @@ public class Exchange
 
     private double getValueByKey(String currency)
     {
-        if (currencies.containsKey(currency))
+        if (factor.containsKey(currency))
         {
-            return currencies.get(currency);
+            return factor.get(currency);
         }
 
         throw new IllegalArgumentException("Currency doesn't exist.");
     }
 
-    private Map<String, Double> currency()
+    private Map<String, Double> factor()
     {
-        Map<String, Double> currency = new HashMap<>();
+        Map<String, Double> factor = new HashMap<>();
 
-        currency.put(Currency.PLN.getCurrencyName(), 1.0);
-        currency.put(Currency.EUR.getCurrencyName(), 0.22);
-        currency.put(Currency.USD.getCurrencyName(), 0.24);
-        currency.put(Currency.GBP.getCurrencyName(), 0.19);
-        currency.put(Currency.SHKL.getCurrencyName(), 0.84);
+        factor.put(Currency.PLN.getCurrencyName(), 1.0);
+        factor.put(Currency.EUR.getCurrencyName(), 0.22);
+        factor.put(Currency.USD.getCurrencyName(), 0.24);
+        factor.put(Currency.GBP.getCurrencyName(), 0.19);
+        factor.put(Currency.SHKL.getCurrencyName(), 0.84);
 
-        return currency;
+        return factor;
     }
 }
 
