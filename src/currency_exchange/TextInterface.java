@@ -2,6 +2,8 @@ package currency_exchange;
 
 import java.util.Scanner;
 
+import static currency_exchange.Currencies.*;
+
 public class TextInterface
 {
     private Scanner scanner = new Scanner(System.in);
@@ -50,15 +52,15 @@ public class TextInterface
         System.out.println("Choose currency:\nPLN, EUR, USD, GBP, SHKL.");
 
         System.out.print("From: ");
-        String from = getStringInput("From: ");
+        Currency from = getCurrency("From: ");
 
         System.out.print("To: ");
-        String to = getStringInput("To: ");
+        Currency to = getCurrency("To: ");
 
         System.out.print("Amount: ");
         double amount = getDoubleInput();
 
-        return amount + " " + from + " is " + exchange.exchangeCurrency(from, to, amount) + " " + to + ".";
+        return amount + " " + from + " is " + exchange.exchange(from, to, amount) + " " + to + ".";
     }
 
     private double getDoubleInput()
@@ -78,7 +80,6 @@ public class TextInterface
                 {
                     return Double.parseDouble(input);
                 }
-
                 catch (NumberFormatException exc)
                 {
                     System.out.print("Not a number.\nAmount: ");
@@ -87,29 +88,27 @@ public class TextInterface
         } while (true);
     }
 
-    private String getStringInput(String fromOrTo)
+    private Currency getCurrency(String fromOrTo)
     {
         do
         {
             String input = scanner.nextLine().strip().toUpperCase();
 
-            for (int x = 0; x < exchange.factor.size(); x++)
-            {
-                if (exchange.factor.containsKey(input))
-                {
-                    return input.toUpperCase();
-                }
-            }
-
             if (input.isEmpty())
             {
                 System.out.print(fromOrTo);
+                continue;
             }
 
-            else if (!exchange.factor.containsKey(input))
+            try
+            {
+                return Currency.valueOf(input);
+            }
+            catch (IllegalArgumentException exc)
             {
                 System.out.print("Currency doesn't exist.\n" + fromOrTo);
             }
+
         } while (true);
     }
 }
