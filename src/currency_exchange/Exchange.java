@@ -3,58 +3,35 @@ package currency_exchange;
 import java.util.HashMap;
 import java.util.Map;
 
+import static currency_exchange.Currencies.*;
+import static currency_exchange.Currencies.Currency.*;
+
 public class Exchange
 {
-    Map<String, Double> factor = factor();
+    Map<Currency, Double> factor = factor();
 
-    public double exchangeCurrency(String from, String to, double amount)
+    public double exchange(Currency inFactor, Currency outFactor, double amount)
     {
-        double fromValue = getValueByKey(from.strip().toUpperCase());
-        double toValue = getValueByKey(to.strip().toUpperCase());
+        double fromValue = getFactor(inFactor);
+        double toValue = getFactor(outFactor);
 
-        return (double) Math.round(((toValue * amount) / fromValue) * 100) / 100;
+        return (double) Math.round(toValue * amount / fromValue * 100) / 100;
     }
 
-    private enum Currency
+    private double getFactor(Currency factor)
     {
-        PLN("PLN"),
-        EUR("EUR"),
-        USD("USD"),
-        GBP("GBP"),
-        SHKL("SHKL");
-
-        private String currency;
-
-        Currency(String currency)
-        {
-            this.currency = currency;
-        }
-
-        public String getCurrencyName()
-        {
-            return currency;
-        }
+        return this.factor.get(factor);
     }
 
-    private double getValueByKey(String currency)
+    private Map<Currency, Double> factor()
     {
-        if (factor.containsKey(currency))
-        {
-            return factor.get(currency);
-        }
+        Map<Currency, Double> factor = new HashMap<>();
 
-        throw new IllegalArgumentException("Currency doesn't exist.");
-    }
-
-    private Map<String, Double> factor()
-    {
-        Map<String, Double> factor = new HashMap<>();
-
-        factor.put(Currency.PLN.getCurrencyName(), 1.0);
-        factor.put(Currency.EUR.getCurrencyName(), 0.22);
-        factor.put(Currency.USD.getCurrencyName(), 0.24);
-        factor.put(Currency.GBP.getCurrencyName(), 0.19);
-        factor.put(Currency.SHKL.getCurrencyName(), 0.84);
+        factor.put(PLN, 1.0);
+        factor.put(EUR, 0.22);
+        factor.put(USD, 0.24);
+        factor.put(GBP, 0.19);
+        factor.put(SHKL, 0.84);
 
         return factor;
     }
