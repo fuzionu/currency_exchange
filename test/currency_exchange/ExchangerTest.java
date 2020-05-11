@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static currency_exchange.Currencies.Currency.*;
 
-class ExchangeTest extends StandardInputTest
+class ExchangerTest extends StandardInputTest
 {
     @Test
     void shouldExchangePlnToPln()
     {
         // given
-        double actual = new Exchange().exchange(PLN, PLN, 1);
+        double actual = new Exchanger().exchange(PLN, PLN, 1);
 
         // then
         assertEquals(1, actual);
@@ -21,7 +21,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangePlnToEur()
     {
         // given
-        double actual = new Exchange().exchange(PLN, EUR, 102);
+        double actual = new Exchanger().exchange(PLN, EUR, 102);
 
         // then
         assertEquals(22.44, actual);
@@ -31,7 +31,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangePlnToUsd()
     {
         // given
-        double actual = new Exchange().exchange(PLN, USD, 144);
+        double actual = new Exchanger().exchange(PLN, USD, 144);
 
         // then
         assertEquals(34.56, actual);
@@ -41,7 +41,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangePlnToGbp()
     {
         // given
-        double actual = new Exchange().exchange(PLN, GBP, 31);
+        double actual = new Exchanger().exchange(PLN, GBP, 31);
 
         // then
         assertEquals(5.89, actual);
@@ -51,7 +51,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangePlnToShkl()
     {
         // given
-        double actual = new Exchange().exchange(PLN, SHKL, 69);
+        double actual = new Exchanger().exchange(PLN, SHKL, 69);
 
         // then
         assertEquals(57.96, actual);
@@ -62,7 +62,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeEurToEur()
     {
         // given
-        double actual = new Exchange().exchange(EUR, EUR, 1);
+        double actual = new Exchanger().exchange(EUR, EUR, 1);
 
         // then
         assertEquals(1, actual);
@@ -72,7 +72,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeEurToPln()
     {
         // given
-        double actual = new Exchange().exchange(EUR, PLN, 100);
+        double actual = new Exchanger().exchange(EUR, PLN, 100);
 
         // then
         assertEquals(454.55, actual);
@@ -82,7 +82,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeEurToUsd()
     {
         // given
-        double actual = new Exchange().exchange(EUR, USD, 38);
+        double actual = new Exchanger().exchange(EUR, USD, 38);
 
         // then
         assertEquals(41.45, actual);
@@ -92,7 +92,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeEurToGbp()
     {
         // given
-        double actual = new Exchange().exchange(EUR, GBP, 23);
+        double actual = new Exchanger().exchange(EUR, GBP, 23);
 
         // then
         assertEquals(19.86, actual);
@@ -102,7 +102,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeEurToShkl()
     {
         // given
-        double actual = new Exchange().exchange(EUR, SHKL, 27);
+        double actual = new Exchanger().exchange(EUR, SHKL, 27);
 
         // then
         assertEquals(103.09, actual);
@@ -116,7 +116,7 @@ class ExchangeTest extends StandardInputTest
         input("exchange", "usd", "usd", "1", "exit");
 
         // when
-        double actual = new Exchange().exchange(USD, USD, 1);
+        double actual = new Exchanger().exchange(USD, USD, 1);
 
         // then
         assertEquals(1, actual);
@@ -126,7 +126,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeUsdToPln()
     {
         // given
-        double actual = new Exchange().exchange(USD, PLN, 115);
+        double actual = new Exchanger().exchange(USD, PLN, 115);
 
         // then
         assertEquals(479.17, actual);
@@ -136,7 +136,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeUsdToEur()
     {
         // given
-        double actual = new Exchange().exchange(USD, EUR, 45);
+        double actual = new Exchanger().exchange(USD, EUR, 45);
 
         // then
         assertEquals(41.25, actual);
@@ -146,7 +146,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeUsdToGbp()
     {
         // given
-        double actual = new Exchange().exchange(USD, GBP, 19);
+        double actual = new Exchanger().exchange(USD, GBP, 19);
 
         // then
         assertEquals(15.04, actual);
@@ -156,7 +156,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeUsdToShkl()
     {
         // given
-        double actual = new Exchange().exchange(USD, SHKL, 17.5);
+        double actual = new Exchanger().exchange(USD, SHKL, 17.5);
 
         // then
         assertEquals(61.25, actual);
@@ -167,7 +167,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeGbpToGbp()
     {
         // given
-        double actual = new Exchange().exchange(GBP, GBP, 1);
+        double actual = new Exchanger().exchange(GBP, GBP, 1);
 
         // then
         assertEquals(1, actual);
@@ -177,7 +177,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeGbpToPln()
     {
         // given
-        double actual = new Exchange().exchange(GBP, PLN, 13);
+        double actual = new Exchanger().exchange(GBP, PLN, 13);
 
         // then
         assertEquals(68.42, actual);
@@ -187,7 +187,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeGbpToEur()
     {
         // given
-        double actual = new Exchange().exchange(GBP, EUR, 31);
+        double actual = new Exchanger().exchange(GBP, EUR, 31);
 
         // then
         assertEquals(35.89, actual);
@@ -197,7 +197,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeGbpToUsd()
     {
         // given
-        double actual = new Exchange().exchange(GBP, USD, 50);
+        double actual = new Exchanger().exchange(GBP, USD, 50);
 
         // then
         assertEquals(63.16, actual);
@@ -207,7 +207,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeGbpToShkl()
     {
         // given
-        double actual = new Exchange().exchange(GBP, SHKL, 9);
+        double actual = new Exchanger().exchange(GBP, SHKL, 9);
 
         // then
         assertEquals(39.79, actual);
@@ -217,7 +217,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeShklToShkl()
     {
         // given
-        double actual = new Exchange().exchange(SHKL, SHKL, 1);
+        double actual = new Exchanger().exchange(SHKL, SHKL, 1);
 
         // then
         assertEquals(1, actual);
@@ -227,7 +227,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeShklToPln()
     {
         // given
-        double actual = new Exchange().exchange(SHKL, PLN, 99);
+        double actual = new Exchanger().exchange(SHKL, PLN, 99);
 
         // then
         assertEquals(117.86, actual);
@@ -237,7 +237,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeShklToEur()
     {
         // given
-        double actual = new Exchange().exchange(SHKL, EUR, 7);
+        double actual = new Exchanger().exchange(SHKL, EUR, 7);
 
         // then
         assertEquals(1.83, actual);
@@ -247,7 +247,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeShklToUsd()
     {
         // given
-        double actual = new Exchange().exchange(SHKL, USD, 20);
+        double actual = new Exchanger().exchange(SHKL, USD, 20);
 
         // then
         assertEquals(5.71, actual);
@@ -258,7 +258,7 @@ class ExchangeTest extends StandardInputTest
     void shouldExchangeNegative()
     {
         // given
-        double actual = new Exchange().exchange(EUR, PLN, -100);
+        double actual = new Exchanger().exchange(EUR, PLN, -100);
 
         // then
         assertEquals(-454.55, actual);

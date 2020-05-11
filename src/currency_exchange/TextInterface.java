@@ -6,12 +6,14 @@ import static currency_exchange.Currencies.*;
 
 public class TextInterface
 {
-    private Scanner scanner = new Scanner(System.in);
-    Exchange exchange = new Exchange();
+    private Scanner scanner;
+    private Exchanger exchanger;
 
-    public void start()
+    public void start(Scanner scanner, Exchanger exchanger)
     {
         final String welcomeMessage = "\nCurrency exchanger v. 0.3.1\nType `exchange` or `exit`";
+        this.scanner = scanner;
+        this.exchanger = exchanger;
 
         System.out.println(welcomeMessage);
 
@@ -60,7 +62,7 @@ public class TextInterface
         System.out.print("Amount: ");
         double amount = getDoubleInput();
 
-        return amount + " " + from + " is " + exchange.exchange(from, to, amount) + " " + to + ".";
+        return amount + " " + from + " is " + exchanger.exchange(from, to, amount) + " " + to + ".";
     }
 
     private double getDoubleInput()

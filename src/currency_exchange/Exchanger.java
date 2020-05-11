@@ -6,7 +6,7 @@ import java.util.Map;
 import static currency_exchange.Currencies.*;
 import static currency_exchange.Currencies.Currency.*;
 
-public class Exchange
+public class Exchanger
 {
     Map<Currency, Double> factor = factor();
 
