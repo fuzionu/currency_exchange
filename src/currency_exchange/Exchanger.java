@@ -8,30 +8,35 @@ import static currency_exchange.Currencies.Currency.*;
 
 public class Exchanger
 {
-    Map<Currency, Double> factor = factor();
+    Map<Currency, Integer> factor = factor();
 
-    public double exchange(Currency inFactor, Currency outFactor, double amount)
+    public double exchangeByCents(Currency inFactor, Currency outFactor, int amount)
     {
-        double fromValue = getFactor(inFactor);
-        double toValue = getFactor(outFactor);
+        int fromValue = getFactor(inFactor);
+        int toValue = getFactor(outFactor);
 
-        return (double) Math.round(toValue * amount / fromValue * 100) / 100;
+        return calculateExchange(amount, fromValue, toValue);
     }
 
-    private double getFactor(Currency factor)
+    private double calculateExchange(int amount, int fromValue, int toValue)
+    {
+        return (double) (toValue * amount / fromValue) / 100;
+    }
+
+    private int getFactor(Currency factor)
     {
         return this.factor.get(factor);
     }
 
-    private Map<Currency, Double> factor()
+    private Map<Currency, Integer> factor()
     {
-        Map<Currency, Double> factor = new HashMap<>();
+        Map<Currency, Integer> factor = new HashMap<>();
 
-        factor.put(PLN, 1.0);
-        factor.put(EUR, 0.22);
-        factor.put(USD, 0.24);
-        factor.put(GBP, 0.19);
-        factor.put(SHKL, 0.84);
+        factor.put(PLN, 100);
+        factor.put(EUR, 22);
+        factor.put(USD, 24);
+        factor.put(GBP, 19);
+        factor.put(SHKL, 84);
 
         return factor;
     }
