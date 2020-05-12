@@ -40,7 +40,7 @@ class TextInterfaceTest extends StandardInputTest
                 "Type `exchange` or `exit`",
                 "-> Choose currency:",
                 "PLN, EUR, USD, GBP, SHKL.",
-                "From: To: Amount: 100.0 EUR is 454.55 PLN.",
+                "From: To: Amount: 100.0 EUR is 454.54 PLN.",
                 "",
                 "Currency exchanger v. 0.3.1",
                 "Type `exchange` or `exit`",
@@ -122,7 +122,7 @@ class TextInterfaceTest extends StandardInputTest
                 "PLN, EUR, USD, GBP, SHKL.",
                 "From: Currency doesn't exist.",
                 "From: To: Currency doesn't exist.",
-                "To: Amount: 100.0 SHKL is 22.62 GBP.",
+                "To: Amount: 100.0 SHKL is 22.61 GBP.",
                 "",
                 "Currency exchanger v. 0.3.1",
                 "Type `exchange` or `exit`",
@@ -201,5 +201,28 @@ class TextInterfaceTest extends StandardInputTest
                 "Type `exchange` or `exit`",
                 "-> Closing..."
         );
+    }
+
+    @Test
+    void shouldExchangeDouble()
+    {
+        // given
+        input("exchange", "pln", "pln", "12.25", "exit");
+
+        // when
+        new TextInterface().start(new Scanner(System.in), new Exchanger());
+
+        // then
+        assertPrinted(
+                "",
+                "Currency exchanger v. 0.3.1",
+                "Type `exchange` or `exit`",
+                "-> Choose currency:",
+                "PLN, EUR, USD, GBP, SHKL.",
+                "From: To: Amount: 12.25 PLN is 12.25 PLN.",
+                "",
+                "Currency exchanger v. 0.3.1",
+                "Type `exchange` or `exit`",
+                "-> Closing...");
     }
 }

@@ -60,12 +60,19 @@ public class TextInterface
         Currency to = getCurrency("To: ");
 
         System.out.print("Amount: ");
-        double amount = getDoubleInput();
+        double amountAsDouble = getAmount();
 
-        return amount + " " + from + " is " + exchanger.exchange(from, to, amount) + " " + to + ".";
+        int amountAsInt = amountToInt(amountAsDouble);
+
+        return amountAsDouble + " " + from + " is " + exchanger.exchangeByCents(from, to, amountAsInt) + " " + to + ".";
     }
 
-    private double getDoubleInput()
+    private int amountToInt(double amount)
+    {
+        return (int) Math.round(amount * 100);
+    }
+
+    private double getAmount()
     {
         do
         {
