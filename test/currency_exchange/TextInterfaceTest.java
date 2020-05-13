@@ -11,10 +11,10 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("exit");
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger());
 
         // when
-        new TextInterface(new Scanner(System.in), new Exchanger()).start();
-
+        textInterface.start();
         // then
         assertPrinted(
                 "",
@@ -29,9 +29,10 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("exchange", "EUR", "PLN", "100", "exit");
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger());
 
         // when
-        new TextInterface(new Scanner(System.in), new Exchanger()).start();
+        textInterface.start();
 
         // then
         assertPrinted(
@@ -53,9 +54,10 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("wtf", "exit");
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger());
 
         // when
-        new TextInterface(new Scanner(System.in), new Exchanger()).start();
+        textInterface.start();
 
         // then
         assertPrinted(
@@ -73,9 +75,10 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("", "  ", " ", "exit");
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger());
 
         // when
-        new TextInterface(new Scanner(System.in), new Exchanger()).start();
+        textInterface.start();
 
         // then
         assertPrinted(
@@ -91,9 +94,10 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("  exit ");
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger());
 
         // when
-        new TextInterface(new Scanner(System.in), new Exchanger()).start();
+        textInterface.start();
 
         // then
         assertPrinted(
@@ -109,9 +113,10 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("exchange", "wtf", "shkl", "asd", "gbp", "100", "exit");
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger());
 
         // when
-        new TextInterface(new Scanner(System.in), new Exchanger()).start();
+        textInterface.start();
 
         // then
         assertPrinted(
@@ -135,9 +140,10 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("exchange", " ", "usd", "shkl", "2", "exit");
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger());
 
         // when
-        new TextInterface(new Scanner(System.in), new Exchanger()).start();
+        textInterface.start();
 
         // then
         assertPrinted(
@@ -159,9 +165,10 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("exchange", "eur", "pln", "asd", "50", "exit");
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger());
 
         // when
-        new TextInterface(new Scanner(System.in), new Exchanger()).start();
+        textInterface.start();
 
         // then
         assertPrinted(
@@ -184,9 +191,10 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("exchange", "gbp", "pln", " ", "1024", "exit");
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger());
 
         // when
-        new TextInterface(new Scanner(System.in), new Exchanger()).start();
+        textInterface.start();
 
         // then
         assertPrinted(
@@ -208,9 +216,10 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("exchange", "pln", "pln", "12.25", "exit");
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger());
 
         // when
-        new TextInterface(new Scanner(System.in), new Exchanger()).start();
+        textInterface.start();
 
         // then
         assertPrinted(
