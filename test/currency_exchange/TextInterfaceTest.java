@@ -41,7 +41,7 @@ class TextInterfaceTest extends StandardInputTest
                 "Type `exchange` or `exit`",
                 "-> Choose currency:",
                 "PLN, EUR, USD, GBP, SHKL.",
-                "From: To: Amount: 100.0 EUR is 454.54 PLN.",
+                "From: To: Amount: 100.00 EUR is 454.54 PLN.",
                 "",
                 "Currency exchanger v. 0.3.1",
                 "Type `exchange` or `exit`",
@@ -127,7 +127,7 @@ class TextInterfaceTest extends StandardInputTest
                 "PLN, EUR, USD, GBP, SHKL.",
                 "From: Currency doesn't exist.",
                 "From: To: Currency doesn't exist.",
-                "To: Amount: 100.0 SHKL is 22.61 GBP.",
+                "To: Amount: 100.00 SHKL is 22.61 GBP.",
                 "",
                 "Currency exchanger v. 0.3.1",
                 "Type `exchange` or `exit`",
@@ -152,7 +152,7 @@ class TextInterfaceTest extends StandardInputTest
                 "Type `exchange` or `exit`",
                 "-> Choose currency:",
                 "PLN, EUR, USD, GBP, SHKL.",
-                "From: From: To: Amount: 2.0 USD is 7.0 SHKL.",
+                "From: From: To: Amount: 2.00 USD is 7.00 SHKL.",
                 "",
                 "Currency exchanger v. 0.3.1",
                 "Type `exchange` or `exit`",
@@ -177,8 +177,7 @@ class TextInterfaceTest extends StandardInputTest
                 "Type `exchange` or `exit`",
                 "-> Choose currency:",
                 "PLN, EUR, USD, GBP, SHKL.",
-                "From: To: Amount: Not a number.",
-                "Amount: 50.0 EUR is 227.27 PLN.",
+                "From: To: Amount: Not a number. Amount: 50.00 EUR is 227.27 PLN.",
                 "",
                 "Currency exchanger v. 0.3.1",
                 "Type `exchange` or `exit`",
@@ -203,7 +202,7 @@ class TextInterfaceTest extends StandardInputTest
                 "Type `exchange` or `exit`",
                 "-> Choose currency:",
                 "PLN, EUR, USD, GBP, SHKL.",
-                "From: To: Amount: Amount: 1024.0 GBP is 5389.47 PLN.",
+                "From: To: Amount: Amount: 1024.00 GBP is 5389.47 PLN.",
                 "",
                 "Currency exchanger v. 0.3.1",
                 "Type `exchange` or `exit`",
@@ -212,10 +211,10 @@ class TextInterfaceTest extends StandardInputTest
     }
 
     @Test
-    void shouldExchangeDouble()
+    void shouldExchangeValueWithComma()
     {
         // given
-        input("exchange", "pln", "pln", "12.25", "exit");
+        input("exchange", "eur", "pln", "12.34", "exit");
         TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger());
 
         // when
@@ -228,7 +227,55 @@ class TextInterfaceTest extends StandardInputTest
                 "Type `exchange` or `exit`",
                 "-> Choose currency:",
                 "PLN, EUR, USD, GBP, SHKL.",
-                "From: To: Amount: 12.25 PLN is 12.25 PLN.",
+                "From: To: Amount: 12.34 EUR is 56.09 PLN.",
+                "",
+                "Currency exchanger v. 0.3.1",
+                "Type `exchange` or `exit`",
+                "-> Closing...");
+    }
+
+    @Test
+    void houldAddToZerosToString()
+    {
+        // given
+        input("exchange", "shkl", "gbp", "10", "exit");
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger());
+
+        // when
+        textInterface.start();
+
+        // then
+        assertPrinted(
+                "",
+                "Currency exchanger v. 0.3.1",
+                "Type `exchange` or `exit`",
+                "-> Choose currency:",
+                "PLN, EUR, USD, GBP, SHKL.",
+                "From: To: Amount: 10.00 SHKL is 2.26 GBP.",
+                "",
+                "Currency exchanger v. 0.3.1",
+                "Type `exchange` or `exit`",
+                "-> Closing...");
+    }
+
+    @Test
+    void shouldAddTwoZerosAfterComma()
+    {
+        // given
+        input("exchange", "usd", "gbp", "13,", "exit");
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger());
+
+        // when
+        textInterface.start();
+
+        // then
+        assertPrinted(
+                "",
+                "Currency exchanger v. 0.3.1",
+                "Type `exchange` or `exit`",
+                "-> Choose currency:",
+                "PLN, EUR, USD, GBP, SHKL.",
+                "From: To: Amount: 13.00 USD is 10.29 GBP.",
                 "",
                 "Currency exchanger v. 0.3.1",
                 "Type `exchange` or `exit`",

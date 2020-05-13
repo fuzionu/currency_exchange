@@ -2,6 +2,8 @@ package currency_exchange;
 
 import java.util.Scanner;
 
+import static currency_exchange.MoneyFormatter.*;
+
 public class TextInterface
 {
     private final Scanner scanner;
@@ -50,7 +52,6 @@ public class TextInterface
         while (true);
     }
 
-
     private String exchange()
     {
         System.out.println("Choose currency:\nPLN, EUR, USD, GBP, SHKL.");
@@ -62,19 +63,27 @@ public class TextInterface
         Currency to = getCurrency("To: ");
 
         System.out.print("Amount: ");
-        double amountAsDouble = getAmount();
+        int amount = getAmount();
 
-        int amountAsInt = amountToInt(amountAsDouble);
-
-        return amountAsDouble + " " + from + " is " + exchanger.exchangeByCents(from, to, amountAsInt) + " " + to + ".";
+        return addComa(amount) + " " + from + " is " + addComa(exchanger.exchangeByCents(from, to, amount)) + " " + to + ".";
     }
 
-    private int amountToInt(double amount)
+    private int parseInt(String string)
     {
-        return (int) Math.round(amount * 100);
+        if (!string.contains(".") && !string.contains(","))
+        {
+            return Integer.parseInt(string + "00");
+        }
+
+        else if (string.substring(string.length() - 1).equals(".") || string.substring(string.length() - 1).equals(","))
+        {
+            return Integer.parseInt(string.replace(",", "").replace(".", "") + "00");
+        }
+
+        return Integer.parseInt(string.replace(",", "").replace(".", ""));
     }
 
-    private double getAmount()
+    private int getAmount()
     {
         do
         {
@@ -83,19 +92,19 @@ public class TextInterface
             if (input.isEmpty())
             {
                 System.out.print("Amount: ");
+                continue;
             }
 
-            else
+            try
             {
-                try
-                {
-                    return Double.parseDouble(input);
-                }
-                catch (NumberFormatException exc)
-                {
-                    System.out.print("Not a number.\nAmount: ");
-                }
+                return parseInt(input);
             }
+
+            catch (NumberFormatException exc)
+            {
+                System.out.print("Not a number. Amount: ");
+            }
+
         } while (true);
     }
 
