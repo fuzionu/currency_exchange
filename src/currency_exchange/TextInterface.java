@@ -37,7 +37,7 @@ public class TextInterface
                 break;
             }
 
-            else if (!command.equalsIgnoreCase("exchange") && !command.equalsIgnoreCase("exit"))
+            else
             {
                 System.out.println("Wrong command.\nUsable commands: `exchange` or `exit`.");
             }
