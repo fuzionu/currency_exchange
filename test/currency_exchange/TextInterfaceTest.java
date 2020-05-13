@@ -13,7 +13,7 @@ class TextInterfaceTest extends StandardInputTest
         input("exit");
 
         // when
-        new TextInterface().start(new Scanner(System.in), new Exchanger());
+        new TextInterface(new Scanner(System.in), new Exchanger()).start();
 
         // then
         assertPrinted(
@@ -31,7 +31,7 @@ class TextInterfaceTest extends StandardInputTest
         input("exchange", "EUR", "PLN", "100", "exit");
 
         // when
-        new TextInterface().start(new Scanner(System.in), new Exchanger());
+        new TextInterface(new Scanner(System.in), new Exchanger()).start();
 
         // then
         assertPrinted(
@@ -55,7 +55,7 @@ class TextInterfaceTest extends StandardInputTest
         input("wtf", "exit");
 
         // when
-        new TextInterface().start(new Scanner(System.in), new Exchanger());
+        new TextInterface(new Scanner(System.in), new Exchanger()).start();
 
         // then
         assertPrinted(
@@ -75,7 +75,7 @@ class TextInterfaceTest extends StandardInputTest
         input("", "  ", " ", "exit");
 
         // when
-        new TextInterface().start(new Scanner(System.in), new Exchanger());
+        new TextInterface(new Scanner(System.in), new Exchanger()).start();
 
         // then
         assertPrinted(
@@ -93,7 +93,7 @@ class TextInterfaceTest extends StandardInputTest
         input("  exit ");
 
         // when
-        new TextInterface().start(new Scanner(System.in), new Exchanger());
+        new TextInterface(new Scanner(System.in), new Exchanger()).start();
 
         // then
         assertPrinted(
@@ -111,7 +111,7 @@ class TextInterfaceTest extends StandardInputTest
         input("exchange", "wtf", "shkl", "asd", "gbp", "100", "exit");
 
         // when
-        new TextInterface().start(new Scanner(System.in), new Exchanger());
+        new TextInterface(new Scanner(System.in), new Exchanger()).start();
 
         // then
         assertPrinted(
@@ -137,7 +137,7 @@ class TextInterfaceTest extends StandardInputTest
         input("exchange", " ", "usd", "shkl", "2", "exit");
 
         // when
-        new TextInterface().start(new Scanner(System.in), new Exchanger());
+        new TextInterface(new Scanner(System.in), new Exchanger()).start();
 
         // then
         assertPrinted(
@@ -161,7 +161,7 @@ class TextInterfaceTest extends StandardInputTest
         input("exchange", "eur", "pln", "asd", "50", "exit");
 
         // when
-        new TextInterface().start(new Scanner(System.in), new Exchanger());
+        new TextInterface(new Scanner(System.in), new Exchanger()).start();
 
         // then
         assertPrinted(
@@ -186,7 +186,7 @@ class TextInterfaceTest extends StandardInputTest
         input("exchange", "gbp", "pln", " ", "1024", "exit");
 
         // when
-        new TextInterface().start(new Scanner(System.in), new Exchanger());
+        new TextInterface(new Scanner(System.in), new Exchanger()).start();
 
         // then
         assertPrinted(
@@ -210,7 +210,7 @@ class TextInterfaceTest extends StandardInputTest
         input("exchange", "pln", "pln", "12.25", "exit");
 
         // when
-        new TextInterface().start(new Scanner(System.in), new Exchanger());
+        new TextInterface(new Scanner(System.in), new Exchanger()).start();
 
         // then
         assertPrinted(

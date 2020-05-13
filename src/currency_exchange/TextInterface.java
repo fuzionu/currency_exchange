@@ -4,14 +4,18 @@ import java.util.Scanner;
 
 public class TextInterface
 {
-    private Scanner scanner;
-    private Exchanger exchanger;
+    private final Scanner scanner;
+    private final Exchanger exchanger;
 
-    public void start(Scanner scanner, Exchanger exchanger)
+    public TextInterface(Scanner scanner, Exchanger exchanger)
     {
-        final String welcomeMessage = "\nCurrency exchanger v. 0.3.1\nType `exchange` or `exit`";
         this.scanner = scanner;
         this.exchanger = exchanger;
+    }
+
+    public void start()
+    {
+        final String welcomeMessage = "\nCurrency exchanger v. 0.3.1\nType `exchange` or `exit`";
 
         System.out.println(welcomeMessage);
 

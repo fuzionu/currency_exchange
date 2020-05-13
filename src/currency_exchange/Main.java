@@ -6,6 +6,6 @@ public class Main
 {
     public static void main(String[] args)
     {
-        new TextInterface().start(new Scanner(System.in), new Exchanger());
+        new TextInterface(new Scanner(System.in), new Exchanger()).start();
     }
 }
