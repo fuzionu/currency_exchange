@@ -2,8 +2,6 @@ package currency_exchange;
 
 import java.util.Scanner;
 
-import static currency_exchange.Currencies.*;
-
 public class TextInterface
 {
     private Scanner scanner;

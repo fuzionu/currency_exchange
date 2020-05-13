@@ -3,17 +3,16 @@ package currency_exchange;
 import java.util.HashMap;
 import java.util.Map;
 
-import static currency_exchange.Currencies.*;
-import static currency_exchange.Currencies.Currency.*;
+import static currency_exchange.Currency.*;
 
 public class Exchanger
 {
-    Map<Currency, Integer> factor = factor();
+    Map<Currency, Integer> factors = getFactors();
 
     public double exchangeByCents(Currency inFactor, Currency outFactor, int amount)
     {
-        int fromValue = getFactor(inFactor);
-        int toValue = getFactor(outFactor);
+        int fromValue = this.factors.get(inFactor);
+        int toValue = this.factors.get(outFactor);
 
         return calculateExchange(amount, fromValue, toValue);
     }
@@ -23,12 +22,7 @@ public class Exchanger
         return (double) (toValue * amount / fromValue) / 100;
     }
 
-    private int getFactor(Currency factor)
-    {
-        return this.factor.get(factor);
-    }
-
-    private Map<Currency, Integer> factor()
+    private Map<Currency, Integer> getFactors()
     {
         Map<Currency, Integer> factor = new HashMap<>();
 

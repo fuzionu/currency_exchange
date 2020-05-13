@@ -3,7 +3,7 @@ package currency_exchange;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static currency_exchange.Currencies.Currency.*;
+import static currency_exchange.Currency.*;
 
 class ExchangerTest extends StandardInputTest
 {
