@@ -65,7 +65,7 @@ public class TextInterface
         System.out.print("Amount: ");
         int amount = getAmount();
 
-        return addComa(amount) + " " + from + " is " + addComa(exchanger.exchangeByCents(from, to, amount)) + " " + to + ".";
+        return formatMoney(amount) + " " + from + " is " + formatMoney(exchanger.exchangeByCents(from, to, amount)) + " " + to + ".";
     }
 
     private int parseInt(String string)
