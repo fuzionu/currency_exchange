@@ -9,7 +9,7 @@ public class Exchanger
 {
     Map<Currency, Integer> factors = getFactors();
 
-    public double exchangeByCents(Currency inFactor, Currency outFactor, int amount)
+    public int exchangeByCents(Currency inFactor, Currency outFactor, int amount)
     {
         int fromValue = this.factors.get(inFactor);
         int toValue = this.factors.get(outFactor);
@@ -17,9 +17,9 @@ public class Exchanger
         return calculateExchange(amount, fromValue, toValue);
     }
 
-    private double calculateExchange(int amount, int fromValue, int toValue)
+    private int calculateExchange(int amount, int fromValue, int toValue)
     {
-        return (double) (toValue * amount / fromValue) / 100;
+        return toValue * amount / fromValue;
     }
 
     private Map<Currency, Integer> getFactors()
