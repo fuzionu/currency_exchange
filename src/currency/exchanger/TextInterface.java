@@ -1,8 +1,6 @@
-package currency_exchange;
+package currency.exchanger;
 
 import java.util.Scanner;
-
-import static currency_exchange.MoneyFormatter.*;
 
 public class TextInterface
 {
@@ -60,7 +58,7 @@ public class TextInterface
         Currency to = getCurrency("To: ");
         int amount = getAmount();
 
-        return formatMoney(amount) + " " + from + " is " + formatMoney(exchanger.exchangeByCents(from, to, amount)) + " " + to + ".";
+        return MoneyFormatter.formatMoney(amount) + " " + from + " is " + MoneyFormatter.formatMoney(exchanger.exchangeByCents(from, to, amount)) + " " + to + ".";
     }
 
     private int parseInt(String string)

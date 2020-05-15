@@ -1,9 +1,9 @@
-package currency_exchange;
+package currency.exchanger;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static currency_exchange.Currency.*;
+import static currency.exchanger.Currency.*;
 
 class ExchangerTest extends StandardInputTest
 {

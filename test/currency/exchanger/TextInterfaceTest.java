@@ -1,4 +1,4 @@
-package currency_exchange;
+package currency.exchanger;
 
 import org.junit.jupiter.api.Test;
 
@@ -235,7 +235,7 @@ class TextInterfaceTest extends StandardInputTest
     }
 
     @Test
-    void houldAddToZerosToString()
+    void shouldAddToZerosToString()
     {
         // given
         input("exchange", "shkl", "gbp", "10", "exit");

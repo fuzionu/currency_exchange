@@ -1,4 +1,4 @@
-package currency_exchange;
+package currency.exchanger;
 
 public class MoneyFormatter
 {

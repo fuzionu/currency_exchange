@@ -1,9 +1,9 @@
-package currency_exchange;
+package currency.exchanger;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static currency_exchange.Currency.*;
+import static currency.exchanger.Currency.*;
 
 public class Exchanger
 {

@@ -1,4 +1,4 @@
-package currency_exchange;
+package currency.exchanger;
 
 import java.util.Scanner;
 

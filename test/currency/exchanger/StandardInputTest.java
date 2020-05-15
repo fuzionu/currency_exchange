@@ -1,4 +1,4 @@
-package currency_exchange;
+package currency.exchanger;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
