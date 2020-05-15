@@ -2,6 +2,9 @@ package currency.exchanger;
 
 import java.util.Scanner;
 
+import static currency.exchanger.MoneyParser.parseInt;
+import static currency.exchanger.MoneyFormatter.formatMoney;
+
 public class TextInterface
 {
     private final Scanner scanner;
@@ -58,22 +61,7 @@ public class TextInterface
         Currency to = getCurrency("To: ");
         int amount = getAmount();
 
-        return MoneyFormatter.formatMoney(amount) + " " + from + " is " + MoneyFormatter.formatMoney(exchanger.exchangeByCents(from, to, amount)) + " " + to + ".";
-    }
-
-    private int parseInt(String string)
-    {
-        if (!string.contains(".") && !string.contains(","))
-        {
-            return Integer.parseInt(string + "00");
-        }
-
-        else if (string.substring(string.length() - 1).equals(".") || string.substring(string.length() - 1).equals(","))
-        {
-            return Integer.parseInt(string.replace(",", "").replace(".", "") + "00");
-        }
-
-        return Integer.parseInt(string.replace(",", "").replace(".", ""));
+        return formatMoney(amount) + " " + from + " is " + formatMoney(exchanger.exchangeByCents(from, to, amount)) + " " + to + ".";
     }
 
     private int getAmount()
