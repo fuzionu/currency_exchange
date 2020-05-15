@@ -7,21 +7,15 @@ import static currency_exchange.Currency.*;
 
 public class Exchanger
 {
-    Map<Currency, Integer> factors = getFactors();
+    final Map<Currency, Integer> factors = getFactors();
 
     public int exchangeByCents(Currency inFactor, Currency outFactor, int amount)
     {
-        int fromValue = this.factors.get(inFactor);
-        int toValue = this.factors.get(outFactor);
+        int fromValue = factors.get(inFactor);
+        int toValue = factors.get(outFactor);
 
-        return calculateExchange(amount, fromValue, toValue);
-    }
-
-    private int calculateExchange(int amount, int fromValue, int toValue)
-    {
         return toValue * amount / fromValue;
     }
-
     private Map<Currency, Integer> getFactors()
     {
         Map<Currency, Integer> factor = new HashMap<>();
