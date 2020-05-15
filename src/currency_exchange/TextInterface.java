@@ -56,13 +56,8 @@ public class TextInterface
     {
         System.out.println("Choose currency:\nPLN, EUR, USD, GBP, SHKL.");
 
-        System.out.print("From: ");
         Currency from = getCurrency("From: ");
-
-        System.out.print("To: ");
         Currency to = getCurrency("To: ");
-
-        System.out.print("Amount: ");
         int amount = getAmount();
 
         return formatMoney(amount) + " " + from + " is " + formatMoney(exchanger.exchangeByCents(from, to, amount)) + " " + to + ".";
@@ -85,6 +80,8 @@ public class TextInterface
 
     private int getAmount()
     {
+        System.out.print("Amount: ");
+
         do
         {
             String input = scanner.nextLine().strip();
@@ -108,15 +105,17 @@ public class TextInterface
         } while (true);
     }
 
-    private Currency getCurrency(String fromOrTo)
+    private Currency getCurrency(String promptTitle)
     {
+        System.out.print(promptTitle);
+
         do
         {
             String input = scanner.nextLine().strip().toUpperCase();
 
             if (input.isEmpty())
             {
-                System.out.print(fromOrTo);
+                System.out.print(promptTitle);
                 continue;
             }
 
@@ -126,7 +125,7 @@ public class TextInterface
             }
             catch (IllegalArgumentException exc)
             {
-                System.out.print("Currency doesn't exist.\n" + fromOrTo);
+                System.out.print("Currency doesn't exist.\n" + promptTitle);
             }
 
         } while (true);
