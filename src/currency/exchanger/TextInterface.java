@@ -2,18 +2,19 @@ package currency.exchanger;
 
 import java.util.Scanner;
 
-import static currency.exchanger.MoneyParser.parseInt;
 import static currency.exchanger.MoneyFormatter.formatMoney;
 
 public class TextInterface
 {
     private final Scanner scanner;
     private final Exchanger exchanger;
+    private final MoneyParser moneyParser;
 
-    public TextInterface(Scanner scanner, Exchanger exchanger)
+    public TextInterface(Scanner scanner, Exchanger exchanger, MoneyParser moneyParser)
     {
         this.scanner = scanner;
         this.exchanger = exchanger;
+        this.moneyParser = moneyParser;
     }
 
     public void start()
@@ -80,7 +81,7 @@ public class TextInterface
 
             try
             {
-                return parseInt(input);
+                return moneyParser.parseInt(input);
             }
 
             catch (NumberFormatException exc)
