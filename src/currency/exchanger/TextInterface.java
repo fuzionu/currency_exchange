@@ -86,7 +86,12 @@ public class TextInterface
 
             catch (NumberFormatException exc)
             {
-                System.out.print("Not a number. Amount: ");
+                System.out.print("Not a number.\nAmount: ");
+            }
+
+            catch (InvalidMoneyFormatException exc)
+            {
+                System.out.print("Invalid number format.\nAmount: ");
             }
 
         } while (true);
