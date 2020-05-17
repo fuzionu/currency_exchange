@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MoneyParserTest
 {
     @Test
-    void shouldAddTwoZerosWhenNoDotOrComma() throws InvalidMoneyFormatException
+    void shouldAddTwoZerosWhenNoDotOrComma()
     {
         // given
         String money = "13";
@@ -21,7 +21,7 @@ class MoneyParserTest
     }
 
     @Test
-    void shouldAddTwoZerosWhenDotIsAtTheEnd() throws InvalidMoneyFormatException
+    void shouldAddTwoZerosWhenDotIsAtTheEnd()
     {
         // given
         String money = "13.";
@@ -35,7 +35,7 @@ class MoneyParserTest
     }
 
     @Test
-    void shouldAddTwoZerosWhenCommaIsAtTheEnd() throws InvalidMoneyFormatException
+    void shouldAddTwoZerosWhenCommaIsAtTheEnd()
     {
         // given
         String money = "12,";
@@ -49,7 +49,7 @@ class MoneyParserTest
     }
 
     @Test
-    void shouldReplaceDot() throws InvalidMoneyFormatException
+    void shouldReplaceDot()
     {
         // given
         String money = "10.00";
@@ -63,7 +63,7 @@ class MoneyParserTest
     }
 
     @Test
-    void shouldReplaceComma() throws InvalidMoneyFormatException
+    void shouldReplaceComma()
     {
         // given
         String money = "15,00";
@@ -77,7 +77,7 @@ class MoneyParserTest
     }
 
     @Test
-    void shouldParseMoney() throws InvalidMoneyFormatException
+    void shouldParseMoney()
     {
         // given
         String money = "13,14";

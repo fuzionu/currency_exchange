@@ -1,9 +1,5 @@
 package currency.exchanger;
 
-public class InvalidMoneyFormatException extends Exception
+public class InvalidMoneyFormatException extends RuntimeException
 {
-    public InvalidMoneyFormatException()
-    {
-        super();
-    }
 }

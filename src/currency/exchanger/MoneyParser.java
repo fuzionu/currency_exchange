@@ -6,7 +6,7 @@ public class MoneyParser
 {
     private final ArrayList<String> forbiddenMarks = getForbiddenMarks();
 
-    public int parseInt(String money) throws InvalidMoneyFormatException
+    public int parseInt(String money)
     {
         if (containsForbiddenMarks(money))
         {
