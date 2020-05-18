@@ -19,6 +19,11 @@ public class MoneyFormatter
             return "0.0" + money;
         }
 
+        return formatMoneyString(money);
+    }
+
+    private static String formatMoneyString(int money)
+    {
         String stringResult = Integer.toString(money);
         StringBuilder stringBuilder = new StringBuilder(stringResult);
         stringBuilder.insert(stringResult.length() - 2, ".");
