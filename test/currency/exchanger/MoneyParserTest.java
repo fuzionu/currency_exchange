@@ -49,7 +49,7 @@ class MoneyParserTest
     }
 
     @Test
-    void shouldReplaceDot()
+    void shouldParseMoneyWithDot()
     {
         // given
         String money = "10.00";
@@ -63,7 +63,7 @@ class MoneyParserTest
     }
 
     @Test
-    void shouldReplaceComma()
+    void shouldParseMoneyWithComma()
     {
         // given
         String money = "15,00";
@@ -74,20 +74,6 @@ class MoneyParserTest
 
         // then
         assertEquals(1500, actual);
-    }
-
-    @Test
-    void shouldParseMoney()
-    {
-        // given
-        String money = "13,14";
-        MoneyParser moneyParser = new MoneyParser();
-
-        // when
-        int actual = moneyParser.parseInt(money);
-
-        // then
-        assertEquals(1314, actual);
     }
 
     @Test
@@ -149,7 +135,7 @@ class MoneyParserTest
     void shouldNotAllowMoreThanTwoDigitsAfterComma()
     {
         // given
-        String money = "13,123456";
+        String money = "13,123";
         MoneyParser moneyParser = new MoneyParser();
 
         // then
