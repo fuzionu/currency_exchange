@@ -84,7 +84,7 @@ class MoneyParserTest
         MoneyParser moneyParser = new MoneyParser();
 
         // then
-        assertThrows(NumberFormatException.class, () -> moneyParser.parseInt(money));
+        assertThrows(InvalidMoneyFormatException.class, () -> moneyParser.parseInt(money));
     }
 
     @Test
@@ -95,7 +95,7 @@ class MoneyParserTest
         MoneyParser moneyParser = new MoneyParser();
 
         // then
-        assertThrows(NumberFormatException.class, () -> moneyParser.parseInt(money));
+        assertThrows(InvalidMoneyFormatException.class, () -> moneyParser.parseInt(money));
     }
 
     @Test
@@ -106,7 +106,7 @@ class MoneyParserTest
         MoneyParser moneyParser = new MoneyParser();
 
         // then
-        assertThrows(NumberFormatException.class, () -> moneyParser.parseInt(money));
+        assertThrows(InvalidMoneyFormatException.class, () -> moneyParser.parseInt(money));
     }
 
     @Test
@@ -117,7 +117,7 @@ class MoneyParserTest
         MoneyParser moneyParser = new MoneyParser();
 
         // then
-        assertThrows(NumberFormatException.class, () -> moneyParser.parseInt(money));
+        assertThrows(InvalidMoneyFormatException.class, () -> moneyParser.parseInt(money));
     }
 
     @Test
@@ -128,7 +128,7 @@ class MoneyParserTest
         MoneyParser moneyParser = new MoneyParser();
 
         // then
-        assertThrows(NumberFormatException.class, () -> moneyParser.parseInt(money));
+        assertThrows(InvalidMoneyFormatException.class, () -> moneyParser.parseInt(money));
     }
 
     @Test

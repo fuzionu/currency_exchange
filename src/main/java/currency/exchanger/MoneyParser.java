@@ -9,22 +9,34 @@ public class MoneyParser
 
     public int parseInt(String money)
     {
+        try
+        {
+            return tryParseMoney(money);
+        }
+        catch (NumberFormatException exc)
+        {
+            throw new InvalidMoneyFormatException();
+        }
+    }
+
+    private int tryParseMoney(String money)
+    {
         if (containsForbiddenMarks(money))
         {
-            throw new NumberFormatException();
+            throw new InvalidMoneyFormatException();
         }
 
-        else if (!money.contains(".") && !money.contains(","))
+        if (!money.contains(".") && !money.contains(","))
         {
             return Integer.parseInt(money + "00");
         }
 
-        else if (money.substring(money.length() - 1).equals(".") || money.substring(money.length() - 1).equals(","))
+        if (money.substring(money.length() - 1).equals(".") || money.substring(money.length() - 1).equals(","))
         {
             return Integer.parseInt(money.replace(",", "").replace(".", "") + "00");
         }
 
-        else if (!validMoneyFormat(money))
+        if (!validMoneyFormat(money))
         {
             throw new InvalidMoneyFormatException();
         }
