@@ -52,28 +52,28 @@ class MoneyParserTest
     void shouldParseMoneyWithDot()
     {
         // given
-        String money = "10.00";
+        String money = "10.29";
         MoneyParser moneyParser = new MoneyParser();
 
         // when
         int actual = moneyParser.parseInt(money);
 
         // then
-        assertEquals(1000, actual);
+        assertEquals(1029, actual);
     }
 
     @Test
     void shouldParseMoneyWithComma()
     {
         // given
-        String money = "15,00";
+        String money = "15,21";
         MoneyParser moneyParser = new MoneyParser();
 
         // when
         int actual = moneyParser.parseInt(money);
 
         // then
-        assertEquals(1500, actual);
+        assertEquals(1521, actual);
     }
 
     @Test
