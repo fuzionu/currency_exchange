@@ -83,4 +83,30 @@ class MoneyFormatterTest
         // then
         assertEquals("-1.22", actual);
     }
+
+    @Test
+    void shouldFormatNegativeMoneyTwoDigits()
+    {
+        // given
+        int money = -12;
+
+        // when
+        String actual = MoneyFormatter.formatMoney(money);
+
+        // then
+        assertEquals("-0.12", actual);
+    }
+
+    @Test
+    void shouldFormatNegativeMoneyOneDigits()
+    {
+        // given
+        int money = -1;
+
+        // when
+        String actual = MoneyFormatter.formatMoney(money);
+
+        // then
+        assertEquals("-0.02", actual);
+    }
 }
