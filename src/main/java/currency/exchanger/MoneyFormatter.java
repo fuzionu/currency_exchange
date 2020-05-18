@@ -19,12 +19,12 @@ public class MoneyFormatter
             return "0.00";
         }
 
-        else if (money >= 10 && money < 100)
+        if (money >= 10 && money < 100)
         {
             return "0." + money;
         }
 
-        else if (money < 10 && money > 0)
+        if (money < 10 && money > 0)
         {
             return "0.0" + money;
         }
