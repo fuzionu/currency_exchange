@@ -1,10 +1,11 @@
 package currency.exchanger;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MoneyParser
 {
-    private final ArrayList<String> forbiddenMarks = getForbiddenMarks();
+    private final List<String> invalidMarks = getInvalidMarks();
 
     public int parseInt(String money)
     {
@@ -23,38 +24,33 @@ public class MoneyParser
             return Integer.parseInt(money.replace(",", "").replace(".", "") + "00");
         }
 
-        else if (money.contains(".") || money.contains(","))
+        else if (!matchMoneyRegex(money))
         {
-            if (countCharactersAfterComma(money))
-            {
-                throw new InvalidMoneyFormatException();
-            }
+            throw new InvalidMoneyFormatException();
         }
 
         return Integer.parseInt(money.replace(",", "").replace(".", ""));
     }
 
-    private boolean countCharactersAfterComma(String string)
+    private boolean matchMoneyRegex(String string)
     {
-        String[] arrOfStr = string.split("[.,]", 2);
-
-        return arrOfStr[1].length() > 2;
+        return string.matches("\\d*([.,]\\d\\d)?");
     }
 
-    private ArrayList<String> getForbiddenMarks()
+    private List<String> getInvalidMarks()
     {
-        ArrayList<String> arr = new ArrayList<>();
+        List<String> invalidMarks = new ArrayList<>();
 
-        arr.add(",");
-        arr.add(".");
-        arr.add("");
-        arr.add(" ");
+        invalidMarks.add(",");
+        invalidMarks.add(".");
+        invalidMarks.add("");
+        invalidMarks.add(" ");
 
-        return arr;
+        return invalidMarks;
     }
 
     private boolean containsForbiddenMarks(String money)
     {
-        return forbiddenMarks.contains(money);
+        return invalidMarks.contains(money);
     }
 }
