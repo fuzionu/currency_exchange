@@ -1,5 +1,8 @@
 apply plugin: 'java'
 
+apply plugin: 'application'
+mainClassName = 'currency.exchanger.Main'
+
 repositories
         {
             mavenCentral()
@@ -17,5 +20,3 @@ test
         {
             useJUnitPlatform()
         }
-
-mainClassName = "currency.exchanger.Main"
