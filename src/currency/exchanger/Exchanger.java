@@ -7,7 +7,7 @@ import static currency.exchanger.Currency.*;
 
 public class Exchanger
 {
-    final Map<Currency, Integer> factors = getFactors();
+    private final Map<Currency, Integer> factors = getFactors();
 
     public int exchangeByCents(Currency inFactor, Currency outFactor, int amount)
     {
