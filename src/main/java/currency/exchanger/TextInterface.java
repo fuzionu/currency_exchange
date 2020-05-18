@@ -84,11 +84,6 @@ public class TextInterface
                 return moneyParser.parseInt(input);
             }
 
-            catch (NumberFormatException exc)
-            {
-                System.out.print("Not a number.\nAmount: ");
-            }
-
             catch (InvalidMoneyFormatException exc)
             {
                 System.out.print("Invalid number format.\nAmount: ");

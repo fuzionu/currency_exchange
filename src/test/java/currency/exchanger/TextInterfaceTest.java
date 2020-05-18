@@ -177,7 +177,7 @@ class TextInterfaceTest extends StandardInputTest
                 "Type `exchange` or `exit`",
                 "-> Choose currency:",
                 "PLN, EUR, USD, GBP, SHKL.",
-                "From: To: Amount: Not a number.",
+                "From: To: Amount: Invalid number format.",
                 "Amount: 50.00 EUR is 227.27 PLN.",
                 "",
                 "Currency exchanger v. 0.3.1",
