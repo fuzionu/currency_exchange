@@ -19,14 +19,13 @@ public class MoneyFormatter
             return "0.0" + money;
         }
 
-        return formatMoneyString(money);
+        return formatMoneyString(Integer.toString(money));
     }
 
-    private static String formatMoneyString(int money)
+    private static String formatMoneyString(String money)
     {
-        String stringResult = Integer.toString(money);
-        StringBuilder stringBuilder = new StringBuilder(stringResult);
-        stringBuilder.insert(stringResult.length() - 2, ".");
+        StringBuilder stringBuilder = new StringBuilder(money);
+        stringBuilder.insert(money.length() - 2, ".");
 
         return stringBuilder.toString();
     }
