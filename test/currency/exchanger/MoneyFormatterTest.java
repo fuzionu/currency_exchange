@@ -10,10 +10,10 @@ class MoneyFormatterTest
     void shouldPutComaTwoSpaceFromEnd_BigAmount()
     {
         // given
-        int groshen = 254127;
+        int money = 254127;
 
         // when
-        String actual = MoneyFormatter.formatMoney(groshen);
+        String actual = MoneyFormatter.formatMoney(money);
 
         // then
         assertEquals("2541.27", actual);
@@ -23,10 +23,10 @@ class MoneyFormatterTest
     void shouldPutComaTwoSpacesFromEnd_SmallAmount_OneDigit()
     {
         // given
-        int groshen = 8;
+        int money = 8;
 
         // when
-        String actual = MoneyFormatter.formatMoney(groshen);
+        String actual = MoneyFormatter.formatMoney(money);
 
         // then
         assertEquals("0.08", actual);
@@ -36,10 +36,10 @@ class MoneyFormatterTest
     void shouldPutComaTwoSpacesFromEnd_SmallAmount_TwoDigits()
     {
         // given
-        int groshen = 10;
+        int money = 10;
 
         // when
-        String actual = MoneyFormatter.formatMoney(groshen);
+        String actual = MoneyFormatter.formatMoney(money);
 
         // then    
         assertEquals("0.10", actual);
@@ -49,10 +49,10 @@ class MoneyFormatterTest
     void shouldPutComaTwoSpacesFromEnd_SmallAmount_ThreeDigits()
     {
         // given
-        int groshen = 153;
+        int money = 153;
 
         // when
-        String actual = MoneyFormatter.formatMoney(groshen);
+        String actual = MoneyFormatter.formatMoney(money);
 
         // then
         assertEquals("1.53", actual);
@@ -62,10 +62,10 @@ class MoneyFormatterTest
     void shouldFormatZeroMoney()
     {
         // given
-        int groshen = 0;
+        int money = 0;
 
         // when
-        String actual = MoneyFormatter.formatMoney(groshen);
+        String actual = MoneyFormatter.formatMoney(money);
 
         // then
         assertEquals("0.00", actual);
@@ -75,10 +75,10 @@ class MoneyFormatterTest
     void shouldFormatNegativeMoney()
     {
         // given
-        int groshen = -122;
+        int money = -122;
 
         // when
-        String actual = MoneyFormatter.formatMoney(groshen);
+        String actual = MoneyFormatter.formatMoney(money);
 
         // then
         assertEquals("-1.22", actual);
