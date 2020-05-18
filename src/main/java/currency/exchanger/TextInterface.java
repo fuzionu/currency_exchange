@@ -49,7 +49,6 @@ public class TextInterface
             {
                 System.out.println("Wrong command.\nUsable commands: `exchange` or `exit`.");
             }
-
         }
         while (true);
     }
@@ -81,7 +80,7 @@ public class TextInterface
 
             try
             {
-                return moneyParser.parseInt(input);
+                return moneyParser.parseMoney(input);
             }
 
             catch (InvalidMoneyFormatException exc)
@@ -110,6 +109,7 @@ public class TextInterface
             {
                 return Currency.valueOf(input);
             }
+
             catch (IllegalArgumentException exc)
             {
                 System.out.print("Currency doesn't exist.\n" + promptTitle);

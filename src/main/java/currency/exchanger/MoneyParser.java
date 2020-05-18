@@ -7,7 +7,7 @@ public class MoneyParser
 {
     private final List<String> invalidMarks = getInvalidMarks();
 
-    public int parseInt(String money)
+    public int parseMoney(String money)
     {
         try
         {
