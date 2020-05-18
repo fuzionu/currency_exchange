@@ -4,6 +4,16 @@ public class MoneyFormatter
 {
     public static String formatMoney(int money)
     {
+        if (money < 0)
+        {
+            return "-" + formatPositiveMoney(Math.abs(money));
+        }
+
+        return formatPositiveMoney(money);
+    }
+
+    private static String formatPositiveMoney(int money)
+    {
         if (money == 0)
         {
             return "0.00";

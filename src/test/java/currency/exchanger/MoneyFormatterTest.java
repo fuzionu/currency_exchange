@@ -107,6 +107,6 @@ class MoneyFormatterTest
         String actual = MoneyFormatter.formatMoney(money);
 
         // then
-        assertEquals("-0.02", actual);
+        assertEquals("-0.01", actual);
     }
 }
