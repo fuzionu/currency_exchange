@@ -24,7 +24,7 @@ public class MoneyParser
             return Integer.parseInt(money.replace(",", "").replace(".", "") + "00");
         }
 
-        else if (!matchMoneyRegex(money))
+        else if (!validMoneyFormat(money))
         {
             throw new InvalidMoneyFormatException();
         }
@@ -32,7 +32,7 @@ public class MoneyParser
         return Integer.parseInt(money.replace(",", "").replace(".", ""));
     }
 
-    private boolean matchMoneyRegex(String string)
+    private boolean validMoneyFormat(String string)
     {
         return string.matches("\\d*([.,]\\d\\d)?");
     }
