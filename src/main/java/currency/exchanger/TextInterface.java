@@ -7,13 +7,13 @@ import static currency.exchanger.MoneyFormatter.formatMoney;
 public class TextInterface
 {
     private final Scanner scanner;
-    private final ConstantExchanger constantExchanger;
+    private final Exchanger exchanger;
     private final MoneyParser moneyParser;
 
-    public TextInterface(Scanner scanner, ConstantExchanger constantExchanger, MoneyParser moneyParser)
+    public TextInterface(Scanner scanner, Exchanger exchanger, MoneyParser moneyParser)
     {
         this.scanner = scanner;
-        this.constantExchanger = constantExchanger;
+        this.exchanger = exchanger;
         this.moneyParser = moneyParser;
     }
 
@@ -61,7 +61,7 @@ public class TextInterface
         Currency to = getCurrency("To: ");
         int amount = getAmount();
 
-        return formatMoney(amount) + " " + from + " is " + formatMoney(constantExchanger.exchange(from, to, amount)) + " " + to + ".";
+        return formatMoney(amount) + " " + from + " is " + formatMoney(exchanger.exchange(from, to, amount)) + " " + to + ".";
     }
 
     private int getAmount()
