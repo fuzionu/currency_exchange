@@ -5,11 +5,12 @@ import java.util.Map;
 
 import static currency.exchanger.Currency.*;
 
-public class ConstantExchanger
+public class ConstantExchanger implements Exchanger
 {
     private final Map<Currency, Integer> factors = getFactors();
 
-    public int exchangeByCents(Currency inFactor, Currency outFactor, int amount)
+    @Override
+    public int exchange(Currency inFactor, Currency outFactor, int amount)
     {
         int fromValue = factors.get(inFactor);
         int toValue = factors.get(outFactor);

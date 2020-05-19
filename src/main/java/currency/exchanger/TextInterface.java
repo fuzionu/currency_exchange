@@ -61,7 +61,7 @@ public class TextInterface
         Currency to = getCurrency("To: ");
         int amount = getAmount();
 
-        return formatMoney(amount) + " " + from + " is " + formatMoney(constantExchanger.exchangeByCents(from, to, amount)) + " " + to + ".";
+        return formatMoney(amount) + " " + from + " is " + formatMoney(constantExchanger.exchange(from, to, amount)) + " " + to + ".";
     }
 
     private int getAmount()
