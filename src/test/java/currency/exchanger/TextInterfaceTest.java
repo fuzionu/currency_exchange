@@ -11,7 +11,7 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("exit");
-        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger(), new MoneyParser());
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new ConstantExchanger(), new MoneyParser());
 
         // when
         textInterface.start();
@@ -29,7 +29,7 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("exchange", "EUR", "PLN", "100", "exit");
-        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger(), new MoneyParser());
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new ConstantExchanger(), new MoneyParser());
 
         // when
         textInterface.start();
@@ -54,7 +54,7 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("wtf", "exit");
-        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger(), new MoneyParser());
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new ConstantExchanger(), new MoneyParser());
 
         // when
         textInterface.start();
@@ -75,7 +75,7 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("", "  ", " ", "exit");
-        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger(), new MoneyParser());
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new ConstantExchanger(), new MoneyParser());
 
         // when
         textInterface.start();
@@ -94,7 +94,7 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("  exit ");
-        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger(), new MoneyParser());
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new ConstantExchanger(), new MoneyParser());
 
         // when
         textInterface.start();
@@ -113,7 +113,7 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("exchange", "wtf", "shkl", "asd", "gbp", "100", "exit");
-        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger(), new MoneyParser());
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new ConstantExchanger(), new MoneyParser());
 
         // when
         textInterface.start();
@@ -140,7 +140,7 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("exchange", " ", "usd", "shkl", "2", "exit");
-        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger(), new MoneyParser());
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new ConstantExchanger(), new MoneyParser());
 
         // when
         textInterface.start();
@@ -165,7 +165,7 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("exchange", "eur", "pln", "asd", "50", "exit");
-        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger(), new MoneyParser());
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new ConstantExchanger(), new MoneyParser());
 
         // when
         textInterface.start();
@@ -191,7 +191,7 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("exchange", "gbp", "pln", " ", "1024", "exit");
-        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger(), new MoneyParser());
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new ConstantExchanger(), new MoneyParser());
 
         // when
         textInterface.start();
@@ -216,7 +216,7 @@ class TextInterfaceTest extends StandardInputTest
     {
         // given
         input("exchange", "eur", "pln", "12.34", "exit");
-        TextInterface textInterface = new TextInterface(new Scanner(System.in), new Exchanger(), new MoneyParser());
+        TextInterface textInterface = new TextInterface(new Scanner(System.in), new ConstantExchanger(), new MoneyParser());
 
         // when
         textInterface.start();

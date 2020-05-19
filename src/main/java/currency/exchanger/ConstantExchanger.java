@@ -5,7 +5,7 @@ import java.util.Map;
 
 import static currency.exchanger.Currency.*;
 
-public class Exchanger
+public class ConstantExchanger
 {
     private final Map<Currency, Integer> factors = getFactors();
 
