@@ -57,14 +57,14 @@ public class TextInterface
     {
         System.out.println("Choose currency:\nPLN, EUR, USD, GBP, SHKL.");
 
-        Currency from = getCurrency("From: ");
-        Currency to = getCurrency("To: ");
-        int amount = getAmount();
+        Currency from = promptCurrency("From: ");
+        Currency to = promptCurrency("To: ");
+        int amount = promptAmount();
 
         return formatMoney(amount) + " " + from + " is " + formatMoney(exchanger.exchange(from, to, amount)) + " " + to + ".";
     }
 
-    private int getAmount()
+    private int promptAmount()
     {
         System.out.print("Amount: ");
 
@@ -91,7 +91,7 @@ public class TextInterface
         } while (true);
     }
 
-    private Currency getCurrency(String promptTitle)
+    private Currency promptCurrency(String promptTitle)
     {
         System.out.print(promptTitle);
 
