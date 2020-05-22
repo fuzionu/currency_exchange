@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static currency.exchanger.Currency.*;
 
-class ConstantExchangerTest extends StandardInputTest
+class ConstantExchangerTest
 {
     @Test
     void shouldExchangePlnToPln()
@@ -112,9 +112,6 @@ class ConstantExchangerTest extends StandardInputTest
     @Test
     void shouldExchangeUsdToUsd()
     {
-        // given
-        input("exchange", "usd", "usd", "1", "exit");
-
         // when
         double actual = new ConstantExchanger().exchange(USD, USD, 100);
 
