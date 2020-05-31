@@ -14,19 +14,14 @@ public class MoneyFormatter
 
     private static String formatPositiveMoney(int money)
     {
-        if (money == 0)
+        if (money < 10 && money >= 0)
         {
-            return "0.00";
+            return "0.0" + money;
         }
 
         if (money >= 10 && money < 100)
         {
             return "0." + money;
-        }
-
-        if (money < 10 && money > 0)
-        {
-            return "0.0" + money;
         }
 
         return formatMoney(Integer.toString(money));
