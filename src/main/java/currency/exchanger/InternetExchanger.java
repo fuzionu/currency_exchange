@@ -51,7 +51,7 @@ public class InternetExchanger implements Exchanger
     {
         public InternetConnectionFailException(Throwable throwable)
         {
-
+             super(throwable);
         }
     }
 
@@ -59,7 +59,7 @@ public class InternetExchanger implements Exchanger
     {
         public MalformedJsonException(Throwable throwable)
         {
-
+            super(throwable);
         }
     }
 }

@@ -1,5 +1,6 @@
 package currency.exchanger;
 
+import currency.exchanger.InternetExchanger.InternetConnectionFailException;
 import org.junit.jupiter.api.Test;
 
 import static currency.exchanger.Currency.EUR;
@@ -7,7 +8,8 @@ import static currency.exchanger.Currency.GBP;
 import static currency.exchanger.Currency.PLN;
 import static currency.exchanger.Currency.SHKL;
 import static currency.exchanger.Currency.USD;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class InternetExchangerTest
 {
@@ -263,5 +265,16 @@ class InternetExchangerTest
 
         // then
         assertEquals(-45455, actual);
+    }
+
+    @Test
+    void shouldThrowInternetConnectionFailException() throws InternetConnectionFailException
+    {
+        // given
+        API throwingApi = new ThrowingAPI();
+        InternetExchanger internetExchanger = new InternetExchanger(throwingApi);
+
+        // when
+        assertThrows(InternetConnectionFailException.class, () -> internetExchanger.exchange(PLN, EUR, 100));
     }
 }
