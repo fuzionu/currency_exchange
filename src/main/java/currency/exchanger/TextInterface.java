@@ -20,35 +20,36 @@ public class TextInterface
     public void start()
     {
         System.out.println(welcomeMessage());
-
         do
         {
             System.out.print("-> ");
-            String command = scanner.nextLine().strip();
-
-            if (command.isEmpty())
-            {
-                continue;
-            }
-
-            if (command.equalsIgnoreCase("exchange"))
-            {
-                System.out.println(exchange());
-                System.out.println(welcomeMessage());
-            }
-
-            else if (command.equalsIgnoreCase("exit"))
-            {
-                System.out.println("Closing...");
+            if (!processCommand(scanner.nextLine().strip())) {
                 break;
-            }
-
-            else
-            {
-                System.out.println("Wrong command.\nUsable commands: `exchange` or `exit`.");
             }
         }
         while (true);
+    }
+
+    private boolean processCommand(String command) {
+        if (command.isEmpty())
+        {
+            return true;
+        }
+        if (command.equalsIgnoreCase("exchange"))
+        {
+            System.out.println(exchange());
+            System.out.println(welcomeMessage());
+        }
+        else if (command.equalsIgnoreCase("exit"))
+        {
+            System.out.println("Closing...");
+            return false;
+        }
+        else
+        {
+            System.out.println("Wrong command.\nUsable commands: `exchange` or `exit`.");
+        }
+        return true;
     }
 
     private String welcomeMessage() {
