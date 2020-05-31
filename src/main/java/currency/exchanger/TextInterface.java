@@ -23,11 +23,7 @@ public class TextInterface
         do
         {
             System.out.print("-> ");
-            if (!processCommand(scanner.nextLine().strip())) {
-                break;
-            }
-        }
-        while (true);
+        } while (processCommand(scanner.nextLine().strip()));
     }
 
     private boolean processCommand(String command) {
