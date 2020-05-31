@@ -19,9 +19,7 @@ public class TextInterface
 
     public void start()
     {
-        final String welcomeMessage = "\nCurrency exchanger v. 0.3.1\nType `exchange` or `exit`";
-
-        System.out.println(welcomeMessage);
+        System.out.println(welcomeMessage());
 
         do
         {
@@ -36,7 +34,7 @@ public class TextInterface
             if (command.equalsIgnoreCase("exchange"))
             {
                 System.out.println(exchange());
-                System.out.println(welcomeMessage);
+                System.out.println(welcomeMessage());
             }
 
             else if (command.equalsIgnoreCase("exit"))
@@ -51,6 +49,10 @@ public class TextInterface
             }
         }
         while (true);
+    }
+
+    private String welcomeMessage() {
+        return "\nCurrency exchanger v. 0.3.1\nType `exchange` or `exit`";
     }
 
     private String exchange()
