@@ -280,39 +280,30 @@ class InternetExchangerTest
     void shouldThrowInternetConnectionFailException() throws InternetConnectionFailException, IOException
     {
         // given
-        API throwingApi = mock(API.class);
-        InternetExchanger internetExchanger = new InternetExchanger(throwingApi);
-        when(throwingApi.getFactors()).thenThrow(IOException.class);
+        InternetExchanger exchanger = new InternetExchanger(mockApi(IOException.class));
 
         // when
-        assertExactThrows(InternetConnectionFailException.class,
-                () -> internetExchanger.exchange(PLN, EUR, 100));
+        assertExactThrows(InternetConnectionFailException.class, () -> exchanger.exchange(PLN, EUR, 100));
     }
 
     @Test
     void shouldThrowMalformedJsonException() throws MalformedJsonException, IOException
     {
         // given
-        API throwingApi = mock(API.class);
-        InternetExchanger internetExchanger = new InternetExchanger(throwingApi);
-        when(throwingApi.getFactors()).thenThrow(JsonParseException.class);
+        InternetExchanger exchanger = new InternetExchanger(mockApi(JsonParseException.class));
 
         // when
-        assertExactThrows(MalformedJsonException.class,
-                () -> internetExchanger.exchange(PLN, EUR, 100));
+        assertExactThrows(MalformedJsonException.class, () -> exchanger.exchange(PLN, EUR, 100));
     }
 
     @Test
     void shouldThrowRuntimeException() throws RuntimeException, IOException
     {
         // given
-        API throwingApi = mock(API.class);
-        InternetExchanger internetExchanger = new InternetExchanger(throwingApi);
-        when(throwingApi.getFactors()).thenThrow(MalformedURLException.class);
+        InternetExchanger exchanger = new InternetExchanger(mockApi(MalformedURLException.class));
 
         // when
-        assertExactThrows(RuntimeException.class,
-                () -> internetExchanger.exchange(PLN, EUR, 100));
+        assertExactThrows(RuntimeException.class, () -> exchanger.exchange(PLN, EUR, 100));
     }
 
     private void assertExactThrows(Class<? extends Exception> exceptionClass, Runnable runnable)
@@ -333,6 +324,12 @@ class InternetExchangerTest
 
         }
 
+        return api;
+    }
+
+    private API mockApi(Class<? extends Exception> exception) throws IOException {
+        API api = mock(API.class);
+        when(api.getFactors()).thenThrow(exception);
         return api;
     }
 
