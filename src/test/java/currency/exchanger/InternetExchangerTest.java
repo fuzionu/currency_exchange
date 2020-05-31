@@ -1,15 +1,22 @@
 package currency.exchanger;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import currency.exchanger.InternetExchanger.InternetConnectionFailException;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 import static currency.exchanger.Currency.EUR;
 import static currency.exchanger.Currency.GBP;
 import static currency.exchanger.Currency.PLN;
 import static currency.exchanger.Currency.SHKL;
 import static currency.exchanger.Currency.USD;
+import static currency.exchanger.InternetExchanger.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class InternetExchangerTest
 {
@@ -268,13 +275,47 @@ class InternetExchangerTest
     }
 
     @Test
-    void shouldThrowInternetConnectionFailException() throws InternetConnectionFailException
+    void shouldThrowInternetConnectionFailException() throws InternetConnectionFailException, IOException
     {
         // given
-        API throwingApi = new ThrowingAPI();
+        API throwingApi = mock(API.class);
         InternetExchanger internetExchanger = new InternetExchanger(throwingApi);
+        when(throwingApi.getFactors()).thenThrow(IOException.class);
 
         // when
-        assertThrows(InternetConnectionFailException.class, () -> internetExchanger.exchange(PLN, EUR, 100));
+        assertExactThrows(InternetConnectionFailException.class,
+                () -> internetExchanger.exchange(PLN, EUR, 100));
+    }
+
+    @Test
+    void shouldThrowMalformedJsonException() throws MalformedJsonException, IOException
+    {
+        // given
+        API throwingApi = mock(API.class);
+        InternetExchanger internetExchanger = new InternetExchanger(throwingApi);
+        when(throwingApi.getFactors()).thenThrow(JsonParseException.class);
+
+        // when
+        assertExactThrows(MalformedJsonException.class,
+                () -> internetExchanger.exchange(PLN, EUR, 100));
+    }
+
+    @Test
+    void shouldThrowRuntimeException() throws RuntimeException, IOException
+    {
+        // given
+        API throwingApi = mock(API.class);
+        InternetExchanger internetExchanger = new InternetExchanger(throwingApi);
+        when(throwingApi.getFactors()).thenThrow(MalformedURLException.class);
+
+        // when
+        assertExactThrows(RuntimeException.class,
+                () -> internetExchanger.exchange(PLN, EUR, 100));
+    }
+
+    private void assertExactThrows(Class<? extends Exception> exceptionClass, Runnable runnable)
+    {
+        Exception exception = assertThrows(exceptionClass, runnable::run);
+        assertEquals(exceptionClass, exception.getClass());
     }
 }
