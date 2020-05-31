@@ -37,7 +37,7 @@ public class TextInterface
         }
         if (command.equalsIgnoreCase("exchange"))
         {
-            System.out.println(exchange());
+            System.out.println(promptExchange());
             System.out.println(welcomeMessage());
         }
         else if (command.equalsIgnoreCase("exit"))
@@ -56,7 +56,7 @@ public class TextInterface
         return "\nCurrency exchanger v. 0.3.1\nType `exchange` or `exit`";
     }
 
-    private String exchange()
+    private String promptExchange()
     {
         System.out.println("Choose currency:\nPLN, EUR, USD, GBP, SHKL.");
 
@@ -64,6 +64,11 @@ public class TextInterface
         Currency to = promptCurrency("To: ");
         int amount = promptAmount();
 
+        return exchangeMoney(from, to, amount);
+    }
+
+    private String exchangeMoney(Currency from, Currency to, int amount)
+    {
         return formatMoney(amount) + " " + from + " is " + formatMoney(exchanger.exchange(from, to, amount)) + " " + to + ".";
     }
 
