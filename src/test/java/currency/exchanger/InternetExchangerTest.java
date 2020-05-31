@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import static currency.exchanger.Currency.EUR;
 import static currency.exchanger.Currency.GBP;
@@ -24,7 +26,7 @@ class InternetExchangerTest
     void shouldExchangePlnToPln()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(PLN, PLN, 100);
+        double actual = new InternetExchanger(mockApi()).exchange(PLN, PLN, 100);
 
         // then
         assertEquals(100, actual);
@@ -34,7 +36,7 @@ class InternetExchangerTest
     void shouldExchangePlnToEur()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(PLN, EUR, 10200);
+        double actual = new InternetExchanger(mockApi()).exchange(PLN, EUR, 10200);
 
         // then
         assertEquals(2244, actual);
@@ -44,7 +46,7 @@ class InternetExchangerTest
     void shouldExchangePlnToUsd()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(PLN, USD, 14400);
+        double actual = new InternetExchanger(mockApi()).exchange(PLN, USD, 14400);
 
         // then
         assertEquals(3456, actual);
@@ -54,7 +56,7 @@ class InternetExchangerTest
     void shouldExchangePlnToGbp()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(PLN, GBP, 3100);
+        double actual = new InternetExchanger(mockApi()).exchange(PLN, GBP, 3100);
 
         // then
         assertEquals(589, actual);
@@ -64,7 +66,7 @@ class InternetExchangerTest
     void shouldExchangePlnToShkl()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(PLN, SHKL, 6900);
+        double actual = new InternetExchanger(mockApi()).exchange(PLN, SHKL, 6900);
 
         // then
         assertEquals(5796, actual);
@@ -75,7 +77,7 @@ class InternetExchangerTest
     void shouldExchangeEurToEur()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(EUR, EUR, 100);
+        double actual = new InternetExchanger(mockApi()).exchange(EUR, EUR, 100);
 
         // then
         assertEquals(100, actual);
@@ -85,7 +87,7 @@ class InternetExchangerTest
     void shouldExchangeEurToPln()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(EUR, PLN, 10000);
+        double actual = new InternetExchanger(mockApi()).exchange(EUR, PLN, 10000);
 
         // then
         assertEquals(45455, actual);
@@ -95,7 +97,7 @@ class InternetExchangerTest
     void shouldExchangeEurToUsd()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(EUR, USD, 3800);
+        double actual = new InternetExchanger(mockApi()).exchange(EUR, USD, 3800);
 
         // then
         assertEquals(4145, actual);
@@ -105,7 +107,7 @@ class InternetExchangerTest
     void shouldExchangeEurToGbp()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(EUR, GBP, 2300);
+        double actual = new InternetExchanger(mockApi()).exchange(EUR, GBP, 2300);
 
         // then
         assertEquals(1986, actual);
@@ -115,7 +117,7 @@ class InternetExchangerTest
     void shouldExchangeEurToShkl()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(EUR, SHKL, 2700);
+        double actual = new InternetExchanger(mockApi()).exchange(EUR, SHKL, 2700);
 
         // then
         assertEquals(10309, actual);
@@ -126,7 +128,7 @@ class InternetExchangerTest
     void shouldExchangeUsdToUsd()
     {
         // when
-        double actual = new InternetExchanger(new FakeAPI()).exchange(USD, USD, 100);
+        double actual = new InternetExchanger(mockApi()).exchange(USD, USD, 100);
 
         // then
         assertEquals(100, actual);
@@ -136,7 +138,7 @@ class InternetExchangerTest
     void shouldExchangeUsdToPln()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(USD, PLN, 11500);
+        double actual = new InternetExchanger(mockApi()).exchange(USD, PLN, 11500);
 
         // then
         assertEquals(47917, actual);
@@ -146,7 +148,7 @@ class InternetExchangerTest
     void shouldExchangeUsdToEur()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(USD, EUR, 4500);
+        double actual = new InternetExchanger(mockApi()).exchange(USD, EUR, 4500);
 
         // then
         assertEquals(4125, actual);
@@ -156,7 +158,7 @@ class InternetExchangerTest
     void shouldExchangeUsdToGbp()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(USD, GBP, 1900);
+        double actual = new InternetExchanger(mockApi()).exchange(USD, GBP, 1900);
 
         // then
         assertEquals(1504, actual);
@@ -166,7 +168,7 @@ class InternetExchangerTest
     void shouldExchangeUsdToShkl()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(USD, SHKL, 1750);
+        double actual = new InternetExchanger(mockApi()).exchange(USD, SHKL, 1750);
 
         // then
         assertEquals(6125, actual);
@@ -177,7 +179,7 @@ class InternetExchangerTest
     void shouldExchangeGbpToGbp()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(GBP, GBP, 100);
+        double actual = new InternetExchanger(mockApi()).exchange(GBP, GBP, 100);
 
         // then
         assertEquals(100, actual);
@@ -187,7 +189,7 @@ class InternetExchangerTest
     void shouldExchangeGbpToPln()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(GBP, PLN, 1300);
+        double actual = new InternetExchanger(mockApi()).exchange(GBP, PLN, 1300);
 
         // then
         assertEquals(6842, actual);
@@ -197,7 +199,7 @@ class InternetExchangerTest
     void shouldExchangeGbpToEur()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(GBP, EUR, 3100);
+        double actual = new InternetExchanger(mockApi()).exchange(GBP, EUR, 3100);
 
         // then
         assertEquals(3589, actual);
@@ -207,7 +209,7 @@ class InternetExchangerTest
     void shouldExchangeGbpToUsd()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(GBP, USD, 5000);
+        double actual = new InternetExchanger(mockApi()).exchange(GBP, USD, 5000);
 
         // then
         assertEquals(6316, actual);
@@ -217,7 +219,7 @@ class InternetExchangerTest
     void shouldExchangeGbpToShkl()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(GBP, SHKL, 900);
+        double actual = new InternetExchanger(mockApi()).exchange(GBP, SHKL, 900);
 
         // then
         assertEquals(3979, actual);
@@ -227,7 +229,7 @@ class InternetExchangerTest
     void shouldExchangeShklToShkl()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(SHKL, SHKL, 100);
+        double actual = new InternetExchanger(mockApi()).exchange(SHKL, SHKL, 100);
 
         // then
         assertEquals(100, actual);
@@ -237,7 +239,7 @@ class InternetExchangerTest
     void shouldExchangeShklToPln()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(SHKL, PLN, 9900);
+        double actual = new InternetExchanger(mockApi()).exchange(SHKL, PLN, 9900);
 
         // then
         assertEquals(11786, actual);
@@ -247,7 +249,7 @@ class InternetExchangerTest
     void shouldExchangeShklToEur()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(SHKL, EUR, 700);
+        double actual = new InternetExchanger(mockApi()).exchange(SHKL, EUR, 700);
 
         // then
         assertEquals(183, actual);
@@ -257,7 +259,7 @@ class InternetExchangerTest
     void shouldExchangeShklToUsd()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(SHKL, USD, 2000);
+        double actual = new InternetExchanger(mockApi()).exchange(SHKL, USD, 2000);
 
         // then
         assertEquals(571, actual);
@@ -268,7 +270,7 @@ class InternetExchangerTest
     void shouldExchangeNegative()
     {
         // given
-        double actual = new InternetExchanger(new FakeAPI()).exchange(EUR, PLN, -10000);
+        double actual = new InternetExchanger(mockApi()).exchange(EUR, PLN, -10000);
 
         // then
         assertEquals(-45455, actual);
@@ -317,5 +319,33 @@ class InternetExchangerTest
     {
         Exception exception = assertThrows(exceptionClass, runnable::run);
         assertEquals(exceptionClass, exception.getClass());
+    }
+
+    private API mockApi()
+    {
+        API api = mock(API.class);
+        try
+        {
+            when(api.getFactors()).thenReturn(factors());
+        }
+        catch (IOException ignored)
+        {
+
+        }
+
+        return api;
+    }
+
+    private Map<Currency, Double> factors()
+    {
+        Map<Currency, Double> factor = new HashMap<>();
+
+        factor.put(PLN, 100.00);
+        factor.put(EUR, 22.00);
+        factor.put(USD, 24.00);
+        factor.put(GBP, 19.00);
+        factor.put(SHKL, 84.00);
+
+        return factor;
     }
 }
