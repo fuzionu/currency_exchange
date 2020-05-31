@@ -277,7 +277,7 @@ class InternetExchangerTest
     }
 
     @Test
-    void shouldThrowInternetConnectionFailException() throws InternetConnectionFailException, IOException
+    void shouldThrowInternetConnectionFailException()
     {
         // given
         InternetExchanger exchanger = new InternetExchanger(mockApi(IOException.class));
@@ -287,7 +287,7 @@ class InternetExchangerTest
     }
 
     @Test
-    void shouldThrowMalformedJsonException() throws MalformedJsonException, IOException
+    void shouldThrowMalformedJsonException()
     {
         // given
         InternetExchanger exchanger = new InternetExchanger(mockApi(JsonParseException.class));
@@ -297,7 +297,7 @@ class InternetExchangerTest
     }
 
     @Test
-    void shouldThrowRuntimeException() throws RuntimeException, IOException
+    void shouldThrowRuntimeException()
     {
         // given
         InternetExchanger exchanger = new InternetExchanger(mockApi(MalformedURLException.class));
@@ -327,9 +327,14 @@ class InternetExchangerTest
         return api;
     }
 
-    private API mockApi(Class<? extends Exception> exception) throws IOException {
+    private API mockApi(Class<? extends Exception> exception)  {
         API api = mock(API.class);
-        when(api.getFactors()).thenThrow(exception);
+        try
+        {
+            when(api.getFactors()).thenThrow(exception);
+        }
+        catch (IOException ignored) {
+        }
         return api;
     }
 
